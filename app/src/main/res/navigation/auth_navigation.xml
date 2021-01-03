@@ -3,21 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/auth_navigation"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/nav_login_fragment">
 
     <fragment
-        android:id="@+id/loginFragment"
+        android:id="@+id/nav_login_fragment"
         android:name="com.azhara.perintisadminapp.ui.auth.fragment.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_nav_login_fragment_to_nav_reset_password_fragment"
+            app:destination="@id/nav_reset_password_fragment" />
+    </fragment>
     <fragment
-        android:id="@+id/resetPasswordFragment"
+        android:id="@+id/nav_reset_password_fragment"
         android:name="com.azhara.perintisadminapp.ui.auth.fragment.ResetPasswordFragment"
         android:label="fragment_reset_password"
-        tools:layout="@layout/fragment_reset_password" />
+        tools:layout="@layout/fragment_reset_password" >
+        <action
+            android:id="@+id/action_nav_reset_password_fragment_to_nav_reset_password_link_information_fragment"
+            app:destination="@id/nav_reset_password_link_information_fragment"
+            app:popUpTo="@id/nav_login_fragment" />
+    </fragment>
     <fragment
-        android:id="@+id/resetPasswordLinkInformationFragment"
+        android:id="@+id/nav_reset_password_link_information_fragment"
         android:name="com.azhara.perintisadminapp.ui.auth.fragment.ResetPasswordLinkInformationFragment"
         android:label="fragment_reset_password_link_information"
-        tools:layout="@layout/fragment_reset_password_link_information" />
+        tools:layout="@layout/fragment_reset_password_link_information" >
+        <action
+            android:id="@+id/action_nav_reset_password_link_information_fragment_to_nav_login_fragment"
+            app:destination="@id/nav_login_fragment"
+            app:popUpTo="@id/nav_login_fragment" />
+    </fragment>
 </navigation>

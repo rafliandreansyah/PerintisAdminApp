@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import com.azhara.perintisadminapp.R
 import com.azhara.perintisadminapp.databinding.FragmentResetPasswordBinding
 
@@ -52,7 +53,7 @@ class ResetPasswordFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when(v?.id){
-
+            R.id.btnSendLink -> view?.findNavController()?.navigate(R.id.action_nav_reset_password_fragment_to_nav_reset_password_link_information_fragment)
         }
     }
 

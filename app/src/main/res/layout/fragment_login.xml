@@ -91,7 +91,6 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_regular"
         android:text="@string/lupa_password"
-        android:textAlignment="center"
         android:textColor="@color/colorTextPrimary"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/btnResetPassword"
