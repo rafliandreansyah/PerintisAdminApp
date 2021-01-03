@@ -6,7 +6,6 @@ plugins {
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.azhara.perintisadminapp"
@@ -16,6 +15,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        viewBinding true
     }
 
     buildTypes {
@@ -40,15 +43,16 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation "androidx.fragment:fragment-ktx:1.2.5"
 
     //Material Design
     implementation 'com.google.android.material:material:1.2.1'
 
-    //Recycleview
+    //RecycleView
     implementation "androidx.recyclerview:recyclerview:1.1.0"
 
     //Lottie
-    implementation "com.airbnb.android:lottie:3.5.0"
+    implementation "com.airbnb.android:lottie:3.6.0"
 
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
