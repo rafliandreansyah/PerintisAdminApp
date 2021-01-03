@@ -56,7 +56,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when(v?.id){
-            
+
         }
     }
 

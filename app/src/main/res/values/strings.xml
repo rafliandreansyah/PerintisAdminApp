@@ -8,4 +8,7 @@
     <string name="login">Login</string>
     <string name="reset_password">Reset Password</string>
     <string name="password">Password</string>
+    <string name="masukkan_email_yang_telah_tedaftar_untuk_mendapat_intruksi_reset_password">Masukkan email yang telah tedaftar untuk mendapat intruksi reset password</string>
+    <string name="kirim_link">Kirim Link</string>
+    <string name="illustrasi_reset_password">Illustrasi reset password</string>
 </resources>
