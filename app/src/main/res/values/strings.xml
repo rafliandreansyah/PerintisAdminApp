@@ -11,4 +11,7 @@
     <string name="masukkan_email_yang_telah_tedaftar_untuk_mendapat_intruksi_reset_password">Masukkan email yang telah tedaftar untuk mendapat intruksi reset password</string>
     <string name="kirim_link">Kirim Link</string>
     <string name="illustrasi_reset_password">Illustrasi reset password</string>
+    <string name="kembali_login">Kembali Login</string>
+    <string name="pengiriman_link_reset_password_telah_terkirim_ncek_emailmu_untuk_melakukan_reset_password">Pengiriman link reset password telah terkirim\nCek emailmu untuk melakukan reset password</string>
+    <string name="illustrasi_cek_email">Illustrasi cek email</string>
 </resources>
