@@ -55,4 +55,17 @@ class AuthViewModel : ViewModel(){
         }
     }
 
+    fun sendPasswordResetEmail(email: String?){
+        _isLoading.value = true
+        val resetPassword = email?.let { auth.sendPasswordResetEmail(it) }
+        resetPassword?.addOnCompleteListener {
+            _isLoading.value = false
+            if (it.isSuccessful){
+                _msg.value = "Kirim Link Berhasil"
+            }else{
+                _msg.value = it.exception?.message
+            }
+        }
+    }
+
 }
