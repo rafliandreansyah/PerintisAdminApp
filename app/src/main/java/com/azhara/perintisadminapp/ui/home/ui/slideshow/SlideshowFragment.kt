@@ -8,8 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.azhara.perintisadminapp.ui.home.R
-import com.azhara.perintisadminapp.ui.home.databinding.FragmentSlideshowBinding
+import com.azhara.perintisadminapp.databinding.FragmentSlideshowBinding
 
 class SlideshowFragment : Fragment() {
 

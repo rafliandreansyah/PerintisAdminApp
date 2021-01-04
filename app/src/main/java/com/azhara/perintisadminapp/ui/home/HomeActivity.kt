@@ -11,7 +11,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
-import com.azhara.perintisadminapp.ui.home.databinding.ActivityHomeBinding
+import com.azhara.perintisadminapp.R
+import com.azhara.perintisadminapp.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
 
