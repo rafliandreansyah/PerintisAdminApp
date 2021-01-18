@@ -87,7 +87,7 @@
         app:layout_constraintGuide_percent="0.96" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvTitleMitraRegister"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_regular"
@@ -111,7 +111,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btnLogin"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/tvTitleMitraRegister"
         app:layout_constraintTop_toBottomOf="@+id/layoutEdtPasswordLogin" />
 
     <Button

@@ -16,6 +16,7 @@ import com.azhara.perintisadminapp.databinding.FragmentLoginBinding
 import com.azhara.perintisadminapp.ui.auth.AuthViewModel
 import com.azhara.perintisadminapp.ui.home.HomeActivity
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginFragment : Fragment(), View.OnClickListener {
 
@@ -23,6 +24,15 @@ class LoginFragment : Fragment(), View.OnClickListener {
     private val binding get() = _binding
 
     private val authViewModel: AuthViewModel by viewModels()
+
+    override fun onStart() {
+        super.onStart()
+        val authUser = FirebaseAuth.getInstance().currentUser
+        if (authUser != null){
+            startActivity(Intent(activity, HomeActivity::class.java))
+            activity?.finish()
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

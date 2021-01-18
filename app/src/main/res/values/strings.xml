@@ -25,4 +25,16 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="mobil">Mobil</string>
+    <string name="user">User</string>
+    <string name="tour">Tour</string>
+    <string name="belum_dikonfirmasi">Belum Dikonfirmasi</string>
+    <string name="on_progress">On Progress</string>
+    <string name="selesai">Selesai</string>
+    <string name="menunggu">Menunggu</string>
+    <string name="info_pemesanan_mobil">Info Pemesanan Mobil</string>
+    <string name="booking_mobil">Booking Mobil</string>
+    <string name="lihat_semua">Lihat Semua</string>
+    <string name="mengajukan_mitra">Mengajukan Mitra</string>
+    <string name="tanggal">Tanggal</string>
 </resources>
