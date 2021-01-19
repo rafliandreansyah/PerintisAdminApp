@@ -1,4 +1,4 @@
-package com.azhara.perintisadminapp.ui.home.ui.home.adapter
+package com.azhara.perintisadminapp.ui.home.ui.dashboard.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

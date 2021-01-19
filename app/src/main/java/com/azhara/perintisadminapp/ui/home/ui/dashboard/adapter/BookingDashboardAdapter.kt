@@ -1,16 +1,12 @@
-package com.azhara.perintisadminapp.ui.home.ui.home.adapter
+package com.azhara.perintisadminapp.ui.home.ui.dashboard.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.azhara.perintisadminapp.R
 import com.azhara.perintisadminapp.databinding.ItemBookedCarDashboardBinding
 import com.azhara.perintisadminapp.entity.BookingData
-import com.azhara.perintisadminapp.utils.Helper
-import com.bumptech.glide.Glide
 
 class BookingDashboardAdapter: ListAdapter<BookingData, BookingDashboardAdapter.BookingDashboardViewHolder>(DIFF_UTIL) {
 

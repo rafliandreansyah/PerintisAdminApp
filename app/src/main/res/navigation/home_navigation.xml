@@ -3,23 +3,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_dashboard">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.azhara.perintisadminapp.ui.home.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:id="@+id/nav_dashboard"
+        android:name="com.azhara.perintisadminapp.ui.home.ui.dashboard.HomeFragment"
+        android:label="@string/dashboard"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.azhara.perintisadminapp.ui.home.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:id="@+id/nav_car"
+        android:name="com.azhara.perintisadminapp.ui.home.ui.car.GalleryFragment"
+        android:label="@string/mobil"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.azhara.perintisadminapp.ui.home.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:id="@+id/nav_tour"
+        android:name="com.azhara.perintisadminapp.ui.home.ui.tour.SlideshowFragment"
+        android:label="@string/tour"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_admin"
+        android:name="com.azhara.perintisadminapp.ui.home.ui.admin.AdminFragment"
+        android:label="@string/admin"
+        tools:layout="@layout/fragment_admin" />
+    <fragment
+        android:id="@+id/nav_booking_tour"
+        android:name="com.azhara.perintisadminapp.ui.home.ui.bookingtour.BookingTourFragment"
+        android:label="@string/booking_tour"
+        tools:layout="@layout/fragment_booking_tour" />
+    <fragment
+        android:id="@+id/nav_change_password"
+        android:name="com.azhara.perintisadminapp.ui.home.ui.changepassword.ChangePasswordFragment"
+        android:label="@string/ganti_password"
+        tools:layout="@layout/fragment_change_password" />
+    <fragment
+        android:id="@+id/nav_mitra"
+        android:name="com.azhara.perintisadminapp.ui.home.ui.mitra.MitraFragment"
+        android:label="@string/mitra"
+        tools:layout="@layout/fragment_mitra" />
+    <fragment
+        android:id="@+id/nav_register_car"
+        android:name="com.azhara.perintisadminapp.ui.home.ui.carmitraregister.MitraCarRegisterFragment"
+        android:label="@string/registrasi_mobil_mitra"
+        tools:layout="@layout/fragment_mitra_car_register" />
+    <fragment
+        android:id="@+id/nav_mitra_register"
+        android:name="com.azhara.perintisadminapp.ui.home.ui.mitraregister.MitraRegisterFragment"
+        android:label="@string/registrasi_mitra"
+        tools:layout="@layout/fragment_mitra_register" />
+    <fragment
+        android:id="@+id/nav_user"
+        android:name="com.azhara.perintisadminapp.ui.home.ui.user.UserFragment"
+        android:label="@string/user"
+        tools:layout="@layout/fragment_user" />
+    <fragment
+        android:id="@+id/nav_booking_car"
+        android:name="com.azhara.perintisadminapp.ui.home.ui.bookingcar.BookingCarFragment"
+        android:label="@string/booking_mobil"
+        tools:layout="@layout/fragment_booking_car"/>
 </navigation>

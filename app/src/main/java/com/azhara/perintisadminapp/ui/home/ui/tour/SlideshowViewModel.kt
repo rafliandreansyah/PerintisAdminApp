@@ -1,4 +1,4 @@
-package com.azhara.perintisadminapp.ui.home.ui.slideshow
+package com.azhara.perintisadminapp.ui.home.ui.tour
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

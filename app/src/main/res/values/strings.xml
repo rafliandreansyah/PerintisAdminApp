@@ -37,4 +37,14 @@
     <string name="lihat_semua">Lihat Semua</string>
     <string name="mengajukan_mitra">Mengajukan Mitra</string>
     <string name="tanggal">Tanggal</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="admin">Admin</string>
+    <string name="mitra">Mitra</string>
+    <string name="booking">Booking</string>
+    <string name="booking_tour">Booking Tour</string>
+    <string name="registrasi_mitra">Registrasi Mitra</string>
+    <string name="registrasi_mobil_mitra">Registrasi Mobil Mitra</string>
+    <string name="pengaturan">Pengaturan</string>
+    <string name="logout">Logout</string>
+    <string name="ganti_password">Ganti Password</string>
 </resources>

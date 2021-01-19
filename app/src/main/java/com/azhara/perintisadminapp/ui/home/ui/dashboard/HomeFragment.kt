@@ -1,4 +1,4 @@
-package com.azhara.perintisadminapp.ui.home.ui.home
+package com.azhara.perintisadminapp.ui.home.ui.dashboard
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,8 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azhara.perintisadminapp.databinding.FragmentHomeBinding
 import com.azhara.perintisadminapp.ui.home.HomeActivity
-import com.azhara.perintisadminapp.ui.home.ui.home.adapter.BookingDashboardAdapter
-import com.azhara.perintisadminapp.ui.home.ui.home.adapter.MitraRegisterAdapter
+import com.azhara.perintisadminapp.ui.home.ui.dashboard.adapter.BookingDashboardAdapter
+import com.azhara.perintisadminapp.ui.home.ui.dashboard.adapter.MitraRegisterAdapter
 import com.azhara.perintisadminapp.utils.Helper
 import com.google.android.material.snackbar.Snackbar
 

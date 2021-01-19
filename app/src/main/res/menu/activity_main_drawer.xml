@@ -5,16 +5,71 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
+            android:id="@+id/nav_dashboard"
+            android:icon="@drawable/ic_dashboard"
+            android:title="@string/dashboard" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_car"
+            android:icon="@drawable/ic_car"
+            android:title="@string/mobil" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_tour"
+            android:icon="@drawable/ic_tour"
+            android:title="@string/tour" />
+        <item
+            android:id="@+id/nav_admin"
+            android:icon="@drawable/ic_admin"
+            android:title="@string/admin" />
+        <item
+            android:id="@+id/nav_mitra"
+            android:icon="@drawable/ic_mitra"
+            android:title="@string/mitra" />
+        <item
+            android:id="@+id/nav_user"
+            android:icon="@drawable/ic_user"
+            android:title="@string/user" />
     </group>
+
+    <item android:title="@string/booking">
+        <menu>
+            <item
+                android:id="@+id/nav_booking_car"
+                android:icon="@drawable/ic_booking_car"
+                android:title="@string/booking_mobil" />
+            <item
+                android:id="@+id/nav_booking_tour"
+                android:icon="@drawable/ic_booking_tour"
+                android:title="@string/booking_tour" />
+        </menu>
+    </item>
+
+    <item android:title="@string/mitra">
+        <menu>
+            <item
+                android:id="@+id/nav_mitra_register"
+                android:icon="@drawable/ic_mitra_register"
+                android:title="@string/registrasi_mitra" />
+            <item
+                android:id="@+id/nav_register_car"
+                android:icon="@drawable/ic_car_register"
+                android:title="@string/registrasi_mobil_mitra" />
+        </menu>
+    </item>
+
+    <item android:title="@string/pengaturan">
+        <menu>
+            <item
+                android:id="@+id/nav_change_password"
+                android:icon="@drawable/ic_change_password"
+                android:title="@string/ganti_password" />
+        </menu>
+    </item>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_logout"
+            android:title="@string/logout" />
+    </group>
+
 </menu>
