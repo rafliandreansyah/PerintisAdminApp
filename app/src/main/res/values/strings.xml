@@ -51,4 +51,6 @@
     <string name="pemilik">Pemilik</string>
     <string name="tahun">Tahun</string>
     <string name="harga">Harga</string>
+    <string name="kapasitas">Kapasitas</string>
+    <string name="durasi">Durasi</string>
 </resources>
