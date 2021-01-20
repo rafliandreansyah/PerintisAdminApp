@@ -47,4 +47,8 @@
     <string name="pengaturan">Pengaturan</string>
     <string name="logout">Logout</string>
     <string name="ganti_password">Ganti Password</string>
+    <string name="fab_add_car">Fab add car</string>
+    <string name="pemilik">Pemilik</string>
+    <string name="tahun">Tahun</string>
+    <string name="harga">Harga</string>
 </resources>

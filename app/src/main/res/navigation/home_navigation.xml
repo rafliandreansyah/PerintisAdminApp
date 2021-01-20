@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/nav_car"
-        android:name="com.azhara.perintisadminapp.ui.home.ui.car.GalleryFragment"
+        android:name="com.azhara.perintisadminapp.ui.home.ui.car.CarFragment"
         android:label="@string/mobil"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_car" />
 
     <fragment
         android:id="@+id/nav_tour"

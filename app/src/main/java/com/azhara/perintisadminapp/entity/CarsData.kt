@@ -14,7 +14,8 @@ data class CarsData(
         var statusReady: Boolean? = false,
         var year: Int? = null,
         var booked: List<BookedDate>? = null,
-        var carNumberPlate: String? = null
+        var carNumberPlate: String? = null,
+        var carOwnerName: String? = null
 )
 
 data class BookedDate(
