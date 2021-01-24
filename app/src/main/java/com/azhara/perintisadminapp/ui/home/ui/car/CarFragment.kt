@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azhara.perintisadminapp.databinding.FragmentCarBinding
 import com.azhara.perintisadminapp.ui.home.HomeActivity
+import com.azhara.perintisadminapp.ui.home.ui.car.adapter.CarAdapter
 import com.google.android.material.snackbar.Snackbar
 
 class CarFragment : Fragment() {

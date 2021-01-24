@@ -1,4 +1,4 @@
-package com.azhara.perintisadminapp.ui.home.ui.car
+package com.azhara.perintisadminapp.ui.home.ui.car.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -23,12 +23,12 @@ class CarAdapter : ListAdapter<CarsData, CarAdapter.CarViewHolder>(DIFF_UTIL){
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarAdapter.CarViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarViewHolder {
         val binding = ItemCarBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return CarViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: CarAdapter.CarViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CarViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
