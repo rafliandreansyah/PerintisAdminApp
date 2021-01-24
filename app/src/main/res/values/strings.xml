@@ -53,4 +53,10 @@
     <string name="harga">Harga</string>
     <string name="kapasitas">Kapasitas</string>
     <string name="durasi">Durasi</string>
+    <string name="atas_nama">Atas Nama</string>
+    <string name="total_pembayaran">Total Pembayaran</string>
+    <string name="transmisi">Transmisi</string>
+    <string name="type_mobil">Type Mobil</string>
+    <string name="transmision">Transmisi:</string>
+    <string name="tahunmobil">Tahun:</string>
 </resources>

@@ -13,7 +13,7 @@ data class BookingData(
     var partnerId: String? = null,
     var pickUpArea: String? = null,
     var startDate: Timestamp? = null,
-    var statusBooking: Int? = null,
+    var statusBooking: Int? = null, //null Belum terkonfirmasi, 0 on Progress dan 1 Selesai
     var totalPrice: Long? = null,
     var userId: String? = null,
     var userImgUrl: String? = null,
