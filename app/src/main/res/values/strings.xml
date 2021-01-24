@@ -59,4 +59,8 @@
     <string name="type_mobil">Type Mobil</string>
     <string name="transmision">Transmisi:</string>
     <string name="tahunmobil">Tahun:</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_new_password">Confirm New Password</string>
+    <string name="change_password">Change Password</string>
 </resources>

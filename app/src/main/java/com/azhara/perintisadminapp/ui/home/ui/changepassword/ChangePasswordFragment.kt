@@ -1,60 +1,122 @@
 package com.azhara.perintisadminapp.ui.home.ui.changepassword
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import com.azhara.perintisadminapp.R
+import com.azhara.perintisadminapp.databinding.FragmentChangePasswordBinding
+import com.azhara.perintisadminapp.ui.home.HomeActivity
+import com.azhara.perintisadminapp.utils.Helper
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ChangePasswordFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ChangePasswordFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val changePasswordViewModel: ChangePasswordViewModel by viewModels()
+    private var _binding: FragmentChangePasswordBinding? = null
+    private val binding get() = _binding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_change_password, container, false)
+        _binding = FragmentChangePasswordBinding.inflate(inflater, container, false)
+        return binding?.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ChangePasswordFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ChangePasswordFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        checkButtonActive()
+        binding?.btnChangePassword?.setOnClickListener {
+            binding?.btnChangePassword?.isEnabled = false
+            checkChangePassword()
+        }
+        stateChangePassword()
+        isLoading()
+    }
+
+    private fun checkButtonActive(){
+        val watcher = object : TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                binding?.layoutEdtOldPasswordChange?.error = null
+                binding?.layoutEdtNewPasswordChange?.error = null
+                binding?.layoutEdtConfirmNewPasswordChange?.error = null
+                if (s?.length == 0){
+                    binding?.btnChangePassword?.isEnabled = false
+                }else{
+                    binding?.btnChangePassword?.isEnabled =
+                            binding?.edtOldPasswordChange?.text?.toString()?.trim()?.isNotBlank()!! &&
+                                    binding?.edtNewPasswordChange?.text?.toString()?.trim()?.isNotBlank()!! &&
+                            binding?.edtConfirmNewPasswordChange?.text?.toString()?.trim()?.isNotBlank()!!
                 }
             }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+        }
+        binding?.edtOldPasswordChange?.addTextChangedListener(watcher)
+        binding?.edtNewPasswordChange?.addTextChangedListener(watcher)
+        binding?.edtConfirmNewPasswordChange?.addTextChangedListener(watcher)
+    }
+
+    private fun checkChangePassword(){
+        val oldPassword = binding?.edtOldPasswordChange?.text?.toString()?.trim()
+        val newPassword =  binding?.edtNewPasswordChange?.text?.toString()?.trim()
+        val confirmNewPassword = binding?.edtConfirmNewPasswordChange?.text?.toString()?.trim()
+
+        if (newPassword != confirmNewPassword){
+            binding?.layoutEdtConfirmNewPasswordChange?.error = "Konfirmasi password tidak sama!"
+        }else{
+            changePasswordViewModel.changePassword(oldPassword, newPassword)
+        }
+    }
+
+    private fun stateChangePassword(){
+        changePasswordViewModel.msgInfo.observe(viewLifecycleOwner, { msgInfo ->
+            if (msgInfo != null){
+                binding?.btnChangePassword?.isEnabled = true
+            }
+            when (msgInfo) {
+                "newPasswordIsSame" -> {
+                    binding?.layoutEdtNewPasswordChange?.error = "Password baru tidak boleh sama!"
+                }
+                "success" -> {
+                    context?.let { Helper.toast("Password berhasil diupdate", it) }
+                    view?.findNavController()?.navigate(R.id.action_nav_change_password_to_nav_dashboard)
+                }
+                "The password is invalid or the user does not have a password." -> {
+                    binding?.layoutEdtOldPasswordChange?.error = "Password lama salah!"
+                }
+                else -> {
+                    binding?.containerChangePassword?.let { Helper.snackbar(msgInfo, it) }
+                }
+            }
+        })
+    }
+
+    private fun isLoading(){
+        changePasswordViewModel.isLoading.observe(viewLifecycleOwner, { isLoading ->
+            if (isLoading == true){
+                (activity as HomeActivity).isLoading(true)
+            }else if(isLoading == false){
+                (activity as HomeActivity).isLoading(false)
+            }
+        })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
