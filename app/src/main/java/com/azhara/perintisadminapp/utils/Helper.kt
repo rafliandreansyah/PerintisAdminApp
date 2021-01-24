@@ -1,5 +1,8 @@
 package com.azhara.perintisadminapp.utils
 
+import android.view.View
+import android.widget.Toast
+import com.google.android.material.snackbar.Snackbar
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -19,5 +22,13 @@ object Helper{
     fun currencyFormat(currency: Long): String{
         val decimalFormat = DecimalFormat("#,###")
         return decimalFormat.format(currency)
+    }
+
+    fun snackbar(msg: String?, view: View){
+        msg?.let {
+            Snackbar.make(view, it, Snackbar.LENGTH_LONG).setAction("Hide"){
+
+            }.show()
+        }
     }
 }

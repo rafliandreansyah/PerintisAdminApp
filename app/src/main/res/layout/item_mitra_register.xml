@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <ImageView
+        android:id="@+id/btnOption"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_option"
+        app:layout_constraintBottom_toBottomOf="@+id/tvItemMitraRegisterName"
+        app:layout_constraintEnd_toStartOf="@+id/guideline23"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvItemMitraRegisterName"
+        app:layout_constraintTop_toTopOf="@+id/tvItemMitraRegisterName" />
+
+    <TextView
+        android:id="@+id/tvItemMitraRegisterName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvItemMitraRegisterStatus"
+        app:layout_constraintEnd_toStartOf="@+id/btnOption"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline22"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Rafli Andreansyah" />
+
+    <TextView
+        android:id="@+id/tvItemMitraRegisterStatus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/roboto_light"
+        android:maxLines="1"
+        android:textSize="12sp"
+        android:textColor="@color/colorRed"
+        app:layout_constraintBottom_toTopOf="@+id/tvItemMitraRegisterEmail"
+        app:layout_constraintEnd_toEndOf="@+id/tvItemMitraRegisterName"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline22"
+        app:layout_constraintTop_toBottomOf="@+id/tvItemMitraRegisterName"
+        tools:text="Menunggu Konfirmasi" />
+
+    <TextView
+        android:id="@+id/tvItemMitraRegisterEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/roboto_light"
+        android:maxLines="1"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvItemMitraRegisterPhoneNumber"
+        app:layout_constraintEnd_toEndOf="@+id/tvItemMitraRegisterStatus"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline22"
+        app:layout_constraintTop_toBottomOf="@+id/tvItemMitraRegisterStatus"
+        tools:text="rafliandreansyah957@gmail.com" />
+
+    <TextView
+        android:id="@+id/tvItemMitraRegisterPhoneNumber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/roboto_light"
+        android:maxLines="1"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView13"
+        app:layout_constraintEnd_toEndOf="@+id/tvItemMitraRegisterEmail"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline22"
+        app:layout_constraintTop_toBottomOf="@+id/tvItemMitraRegisterEmail"
+        tools:text="081232720821" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/roboto_light"
+        android:text="@string/transmisi"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvItemMitraRegisterCarTransmision"
+        app:layout_constraintEnd_toStartOf="@+id/textView16"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/guideline22"
+        app:layout_constraintTop_toBottomOf="@+id/tvItemMitraRegisterPhoneNumber" />
+
+    <TextView
+        android:id="@+id/tvItemMitraRegisterCarTransmision"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/colorTextPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/view3"
+        app:layout_constraintEnd_toStartOf="@+id/tvItemMitraRegisterCarType"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline22"
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        tools:text="Manual" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="@string/type_mobil"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvItemMitraRegisterCarType"
+        app:layout_constraintEnd_toStartOf="@+id/textView18"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView13"
+        app:layout_constraintTop_toTopOf="@+id/textView13"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tvItemMitraRegisterCarType"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/colorTextPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/tvItemMitraRegisterCarTransmision"
+        app:layout_constraintEnd_toEndOf="@+id/textView16"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView16"
+        app:layout_constraintTop_toBottomOf="@+id/textView16"
+        tools:text="Honda Jazz" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="50dp"
+        android:text="@string/tahun"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvItemMitraRegisterCarYear"
+        app:layout_constraintEnd_toStartOf="@+id/guideline23"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView16"
+        app:layout_constraintTop_toTopOf="@+id/textView16"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tvItemMitraRegisterCarYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/colorTextPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/tvItemMitraRegisterCarType"
+        app:layout_constraintStart_toStartOf="@+id/textView18"
+        app:layout_constraintTop_toBottomOf="@+id/textView18"
+        tools:text="2017" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorTextSecondary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvItemMitraRegisterCarTransmision" />
+</androidx.constraintlayout.widget.ConstraintLayout>
