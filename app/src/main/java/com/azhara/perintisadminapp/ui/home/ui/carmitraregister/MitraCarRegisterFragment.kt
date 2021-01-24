@@ -5,29 +5,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.azhara.perintisadminapp.R
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.azhara.perintisadminapp.databinding.FragmentMitraCarRegisterBinding
+import com.azhara.perintisadminapp.ui.home.HomeActivity
+import com.azhara.perintisadminapp.ui.home.ui.carmitraregister.adapter.CarMitraRegisterAdapter
+import com.azhara.perintisadminapp.utils.Helper
+import com.google.android.material.snackbar.Snackbar
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [MitraCarRegisterFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MitraCarRegisterFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private lateinit var carMitraRegisterAdapter: CarMitraRegisterAdapter
+    private val carRegisterViewModel: CarRegisterViewModel by viewModels()
+
+    private var _binding: FragmentMitraCarRegisterBinding? = null
+    private val binding get() = _binding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        carRegisterViewModel.getDataCarRegister()
     }
 
     override fun onCreateView(
@@ -35,26 +31,52 @@ class MitraCarRegisterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mitra_car_register, container, false)
+        _binding = FragmentMitraCarRegisterBinding.inflate(inflater, container, false)
+        return binding?.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MitraCarRegisterFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MitraCarRegisterFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        carMitraRegisterAdapter = CarMitraRegisterAdapter()
+
+        setDataCarMitraRegister()
+        isLoading()
+        msgInfo()
+    }
+
+    private fun setDataCarMitraRegister(){
+        carRegisterViewModel.dataCarRegister.observe(viewLifecycleOwner, { dataCarRegister ->
+            carMitraRegisterAdapter.submitList(dataCarRegister)
+            with(binding){
+                this?.rvCarMitraRegister?.layoutManager = LinearLayoutManager(context)
+                this?.rvCarMitraRegister?.setHasFixedSize(true)
+                this?.rvCarMitraRegister?.adapter = carMitraRegisterAdapter
             }
+        })
+    }
+
+    private fun isLoading(){
+        carRegisterViewModel.isLoading.observe(viewLifecycleOwner, { isLoading ->
+            if (isLoading == true){
+                (activity as HomeActivity).isLoading(true)
+            }else{
+                (activity as HomeActivity).isLoading(false  )
+            }
+        })
+    }
+
+    private fun msgInfo(){
+        carRegisterViewModel.msg.observe(viewLifecycleOwner, { msg ->
+            if (msg != null){
+                binding?.containerCarMitraRegister?.let { Helper.snackbar(msg, it) }
+            }
+        })
+
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
