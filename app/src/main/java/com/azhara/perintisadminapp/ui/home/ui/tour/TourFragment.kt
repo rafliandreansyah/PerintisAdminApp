@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azhara.perintisadminapp.databinding.FragmentTourBinding
 import com.azhara.perintisadminapp.ui.home.HomeActivity
+import com.azhara.perintisadminapp.utils.Helper
 import com.google.android.material.snackbar.Snackbar
 
 class TourFragment : Fragment() {
@@ -72,9 +73,7 @@ class TourFragment : Fragment() {
     private fun msgInfo(){
         tourViewModel.msg.observe(viewLifecycleOwner, { msg ->
             if (msg != null){
-                Snackbar.make(binding.containerTour, msg, Snackbar.LENGTH_LONG).setAction("Hide"){
-
-                }.show()
+                Helper.snackbar(msg, binding.containerTour)
             }
         })
 
