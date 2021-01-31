@@ -1,5 +1,6 @@
 package com.azhara.perintisadminapp.ui.home.ui.admin
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.azhara.perintisadminapp.entity.AdminData
@@ -10,6 +11,9 @@ class AdminViewModel: ViewModel() {
 
     private val _dataAdmin = MutableLiveData<List<AdminData>>()
     val dataAdmin = _dataAdmin
+
+    private val _dataAdminOnce = MutableLiveData<List<AdminData>>()
+    val dataAdminOnce = _dataAdminOnce
 
     private val _msg = MutableLiveData<String>()
     val msg = _msg
@@ -29,6 +33,72 @@ class AdminViewModel: ViewModel() {
                 _dataAdmin.postValue(value.toObjects(AdminData::class.java))
             }
         }
+    }
+
+    fun getAdminOnce(){
+        _isLoading.value = true
+        val adminDb = FirebaseConstants.firebaseDb.collection("admin")
+        adminDb.get().addOnCompleteListener {
+            _isLoading.value = false
+            if (it.isSuccessful){
+                _dataAdminOnce.postValue(it.result?.toObjects(AdminData::class.java))
+            }
+            else{
+                it.exception?.message?.let { it1 -> Log.e("AdminViewModel", it1) }
+                _msg.value = it.exception?.message
+            }
+        }
+    }
+
+    fun addAdmin(email: String?, name: String?, phone: Long?, password: String?){
+
+        _isLoading.value = true
+        val auth = FirebaseConstants.firebaseAuth
+
+        val dataUser = hashMapOf(
+            "email" to email,
+            "imgUrl" to null,
+            "name" to name,
+            "phone" to phone
+        )
+
+        //Membuat akun firebase auth
+        email?.let { password?.let { it1 ->
+            auth.createUserWithEmailAndPassword(it,
+                it1
+            )
+        } }?.addOnCompleteListener { register ->
+
+            if (register.isSuccessful){
+
+                val userId = register.result?.user?.uid
+                val adminDb = userId?.let {
+                    FirebaseConstants.firebaseDb.collection("admin").document(
+                        it
+                    )
+                }
+
+                // Membuat document data admin pada firestore
+                adminDb?.set(dataUser)?.addOnCompleteListener { addAdmin ->
+                    _isLoading.value = false
+                    if (addAdmin.isSuccessful){
+                        _msg.value = "success"
+                    }
+                    else{
+                        _msg.value = register.exception?.message
+                    }
+
+                }
+
+            }
+            else{
+                _isLoading.value = false
+                _msg.value = register.exception?.message
+            }
+
+        }
+
+
     }
 
 }

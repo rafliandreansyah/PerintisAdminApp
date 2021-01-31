@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azhara.perintisadminapp.R
 import com.azhara.perintisadminapp.databinding.FragmentAdminBinding
@@ -17,7 +18,7 @@ import com.azhara.perintisadminapp.ui.home.ui.mitra.adapter.MitraAdapter
 import com.google.android.material.snackbar.Snackbar
 
 
-class AdminFragment : Fragment() {
+class AdminFragment : Fragment(), View.OnClickListener {
 
     private lateinit var adminAdapter: AdminAdapter
     private val adminViewModel: AdminViewModel by viewModels()
@@ -39,6 +40,9 @@ class AdminFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding?.fabAddAdmin?.setOnClickListener(this)
+
         adminAdapter = AdminAdapter()
 
         setDataAdmin()
@@ -81,5 +85,13 @@ class AdminFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.fabAddAdmin -> {
+                view?.findNavController()?.navigate(R.id.action_nav_admin_to_addAdminFragment)
+            }
+        }
     }
 }

@@ -72,4 +72,8 @@
     <string name="konfirmasi">Konfirmasi</string>
     <string name="tidak_ada_bukti_pembayaran">Tidak ada bukti pembayaran</string>
     <string name="hapus_pesanan">Hapus Pesanan</string>
+    <string name="tambah_admin">Tambah Admin</string>
+    <string name="konfirmasi_password">Konfirmasi Password</string>
+    <string name="telephone">Telephone</string>
+    <string name="nama_admin">Nama Admin</string>
 </resources>

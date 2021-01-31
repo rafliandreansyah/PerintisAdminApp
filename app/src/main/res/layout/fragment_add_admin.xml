@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/containerAddAdmin"
+    tools:context=".ui.home.ui.admin.AddAdminFragment">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutEdtNameAddAdmin"
+        style="@style/EditTextOutline"
+        android:layout_marginTop="24dp"
+        android:hint="@string/nama_admin"
+        app:layout_constraintBottom_toTopOf="@+id/layoutEdtEmailAddAdmin"
+        app:layout_constraintEnd_toStartOf="@+id/guideline39"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline38"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtNameAddAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutEdtEmailAddAdmin"
+        style="@style/EditTextOutline"
+        android:layout_marginTop="16dp"
+        android:hint="@string/email"
+        app:layout_constraintBottom_toTopOf="@+id/layoutEdtPhoneAddAdmin"
+        app:layout_constraintEnd_toStartOf="@+id/guideline39"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline38"
+        app:layout_constraintTop_toBottomOf="@+id/layoutEdtNameAddAdmin">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtEmailAddAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutEdtPhoneAddAdmin"
+        style="@style/EditTextOutline"
+        android:layout_marginTop="16dp"
+        android:hint="@string/telephone"
+        app:layout_constraintBottom_toTopOf="@+id/layoutEdtPasswordAddAdmin"
+        app:layout_constraintEnd_toStartOf="@+id/guideline39"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline38"
+        app:layout_constraintTop_toBottomOf="@+id/layoutEdtEmailAddAdmin">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPhoneAddAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutEdtPasswordAddAdmin"
+        style="@style/EditTextOutline"
+        android:layout_marginTop="16dp"
+        android:hint="@string/password"
+        app:endIconMode="password_toggle"
+        app:layout_constraintBottom_toTopOf="@+id/layoutEdtConfirmPasswordAddAdmin"
+        app:layout_constraintEnd_toStartOf="@+id/guideline39"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline38"
+        app:layout_constraintTop_toBottomOf="@+id/layoutEdtPhoneAddAdmin">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPasswordAddAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutEdtConfirmPasswordAddAdmin"
+        style="@style/EditTextOutline"
+        android:layout_marginTop="16dp"
+        android:hint="@string/konfirmasi_password"
+        app:endIconMode="password_toggle"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddAdmin"
+        app:layout_constraintEnd_toStartOf="@+id/guideline39"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline38"
+        app:layout_constraintTop_toBottomOf="@+id/layoutEdtPasswordAddAdmin">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtConfirmPasswordAddAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnAddAdmin"
+        style="@style/ButtonPrimary"
+        android:layout_marginTop="24dp"
+        android:enabled="false"
+        android:text="@string/tambah_admin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline39"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline38"
+        app:layout_constraintTop_toBottomOf="@+id/layoutEdtConfirmPasswordAddAdmin"/>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline38"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline39"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
