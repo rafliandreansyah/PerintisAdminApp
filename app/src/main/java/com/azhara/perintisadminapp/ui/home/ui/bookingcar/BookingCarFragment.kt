@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.azhara.perintisadminapp.R
 import com.azhara.perintisadminapp.databinding.FragmentBookingCarBinding
-import com.azhara.perintisadminapp.databinding.FragmentCarBinding
+import com.azhara.perintisadminapp.entity.BookingData
 import com.azhara.perintisadminapp.ui.home.HomeActivity
 import com.azhara.perintisadminapp.ui.home.ui.bookingcar.adapter.BookingCarAdapter
 import com.azhara.perintisadminapp.utils.Helper
@@ -44,6 +44,7 @@ class BookingCarFragment : Fragment() {
         setData()
         isLoading()
         msg()
+        onItemClicked()
     }
 
     private fun setData(){
@@ -65,6 +66,15 @@ class BookingCarFragment : Fragment() {
                 (activity as HomeActivity).isLoading(true)
             }else{
                 (activity as HomeActivity).isLoading(false)
+            }
+        })
+    }
+
+    private fun onItemClicked(){
+        bookingCarAdapter.setOnItemClicked(object : BookingCarAdapter.OnItemClickBookingCarListener{
+            override fun onItemClicked(bookingData: BookingData) {
+                val action = BookingCarFragmentDirections.actionNavBookingCarToDetailBookingCarFragment(bookingData)
+                view?.findNavController()?.navigate(action)
             }
         })
     }

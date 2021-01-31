@@ -24,6 +24,12 @@ class BookingCarAdapter: ListAdapter<BookingData, BookingCarAdapter.BookingCarVi
         }
     }
 
+    private var onItemClickedBookingCarListener: OnItemClickBookingCarListener? = null
+
+    fun setOnItemClicked(onItemClickedBookingCarListener: OnItemClickBookingCarListener){
+        this.onItemClickedBookingCarListener = onItemClickedBookingCarListener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookingCarAdapter.BookingCarViewHolder =
             BookingCarViewHolder(ItemBookingCarBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
@@ -40,21 +46,28 @@ class BookingCarAdapter: ListAdapter<BookingData, BookingCarAdapter.BookingCarVi
                 tvItemCarBookingDuration.text = "${bookingData.duration} Hari"
                 tvItemCarBookingTotalPrice.text = "Rp. ${bookingData.totalPrice?.let { Helper.currencyFormat(it) }}"
                 when (bookingData.statusBooking) {
-                    null -> {
+                    "null" -> {
                         tvItemKonfirmationStatus.text = "Menunggu Konfirmasi"
                         tvItemKonfirmationStatus.setTextColor(ContextCompat.getColor(itemView.context, R.color.colorRed))
                     }
-                    0 -> {
+                    "0" -> {
                         tvItemKonfirmationStatus.text = "On Progress"
                         tvItemKonfirmationStatus.setTextColor(ContextCompat.getColor(itemView.context, R.color.colorAccent))
                     }
-                    1 -> {
+                    "1" -> {
                         tvItemKonfirmationStatus.text = "Selesai"
                         tvItemKonfirmationStatus.setTextColor(ContextCompat.getColor(itemView.context, R.color.colorGreen))
                     }
                 }
+                itemBookingCar.setOnClickListener {
+                    onItemClickedBookingCarListener?.onItemClicked(bookingData)
+                }
             }
         }
+    }
+
+    interface OnItemClickBookingCarListener{
+        fun onItemClicked(bookingData: BookingData)
     }
 
 }

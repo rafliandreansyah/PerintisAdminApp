@@ -103,10 +103,10 @@ class HomeFragment : Fragment() {
                     it.statusBooking == null
                 }
                 val dataCarOnProgress = dataBookingCar.filter {
-                    it.statusBooking == 0
+                    it.statusBooking == "0"
                 }
                 val dataCarDone = dataBookingCar.filter {
-                    it.statusBooking == 1
+                    it.statusBooking == "1"
                 }
                 dataCarDone.forEach {
                     totalIncome += it.totalPrice!!

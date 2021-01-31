@@ -20,6 +20,16 @@ object Helper{
         return sdf.format(startSecondDate)
     }
 
+    fun convertTime(time: Long?, format: String?): String? {
+        // Convert timestamp to local time
+        val calendar = Calendar.getInstance()
+        val tz = calendar.timeZone
+        val sdf = SimpleDateFormat(format)
+        sdf.timeZone = tz
+        val startSecondDate = time?.times(1000)?.let { Date(it) }
+        return sdf.format(startSecondDate)
+    }
+
     fun currencyFormat(currency: Long): String{
         val decimalFormat = DecimalFormat("#,###")
         return decimalFormat.format(currency)

@@ -67,5 +67,25 @@
         android:id="@+id/nav_booking_car"
         android:name="com.azhara.perintisadminapp.ui.home.ui.bookingcar.BookingCarFragment"
         android:label="@string/booking_mobil"
-        tools:layout="@layout/fragment_booking_car"/>
+        tools:layout="@layout/fragment_booking_car">
+        <action
+            android:id="@+id/action_nav_booking_car_to_detailBookingCarFragment"
+            app:destination="@id/detailBookingCarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailBookingCarFragment"
+        android:name="com.azhara.perintisadminapp.ui.home.ui.bookingcar.DetailBookingCarFragment"
+        android:label="Detail Booking Car"
+        tools:layout="@layout/fragment_detail_booking_car" >
+        <argument
+            android:name="bookingData"
+            app:argType="com.azhara.perintisadminapp.entity.BookingData"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_detailBookingCarFragment_to_nav_booking_car"
+            app:destination="@id/nav_booking_car"
+            app:popUpTo="@id/nav_dashboard"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

@@ -63,4 +63,13 @@
     <string name="new_password">New Password</string>
     <string name="confirm_new_password">Confirm New Password</string>
     <string name="change_password">Change Password</string>
+    <string name="start">Start</string>
+    <string name="end">End</string>
+    <string name="informasi">Informasi</string>
+    <string name="lokasi_pengambilan">Lokasi Pengambilan</string>
+    <string name="bukti_pembayaran">Bukti Pembayaran</string>
+    <string name="lihat_detail">Lihat Detail</string>
+    <string name="konfirmasi">Konfirmasi</string>
+    <string name="tidak_ada_bukti_pembayaran">Tidak ada bukti pembayaran</string>
+    <string name="hapus_pesanan">Hapus Pesanan</string>
 </resources>

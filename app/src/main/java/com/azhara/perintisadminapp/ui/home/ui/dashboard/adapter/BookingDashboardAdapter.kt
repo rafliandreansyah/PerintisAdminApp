@@ -54,10 +54,10 @@ class BookingDashboardAdapter: ListAdapter<BookingData, BookingDashboardAdapter.
                 if (bookingData.statusBooking == null){
                     itemStatusBooking.text = "Menunggu Konfirmasi"
                     itemStatusBooking.setTextColor(ContextCompat.getColor(itemView.context, R.color.colorRed))
-                }else if(bookingData.statusBooking == 0){
+                }else if(bookingData.statusBooking == "0"){
                     itemStatusBooking.text = "On Progress"
                     itemStatusBooking.setTextColor(ContextCompat.getColor(itemView.context, R.color.colorAccent))
-                }else if (bookingData.statusBooking == 1){
+                }else if (bookingData.statusBooking == "1"){
                     itemStatusBooking.text = "Selesai"
                     itemStatusBooking.setTextColor(ContextCompat.getColor(itemView.context, R.color.colorGreen))
                 }
