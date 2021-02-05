@@ -95,7 +95,7 @@
     <fragment
         android:id="@+id/addAdminFragment"
         android:name="com.azhara.perintisadminapp.ui.home.ui.admin.AddAdminFragment"
-        android:label="fragment_add_admin"
+        android:label="@string/tambah_admin"
         tools:layout="@layout/fragment_add_admin" >
         <action
             android:id="@+id/action_addAdminFragment_to_nav_admin"

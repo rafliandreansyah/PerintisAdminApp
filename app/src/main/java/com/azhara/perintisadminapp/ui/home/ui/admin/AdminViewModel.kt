@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.azhara.perintisadminapp.entity.AdminData
 import com.azhara.perintisadminapp.entity.MitraData
 import com.azhara.perintisadminapp.utils.FirebaseConstants
+import com.azhara.perintisadminapp.utils.SingleLiveEvent
 
 class AdminViewModel: ViewModel() {
 
@@ -15,7 +16,7 @@ class AdminViewModel: ViewModel() {
     private val _dataAdminOnce = MutableLiveData<List<AdminData>>()
     val dataAdminOnce = _dataAdminOnce
 
-    private val _msg = MutableLiveData<String>()
+    private val _msg = SingleLiveEvent<String>()
     val msg = _msg
 
     private val _isLoading = MutableLiveData<Boolean>()
@@ -98,7 +99,39 @@ class AdminViewModel: ViewModel() {
 
         }
 
+    }
 
+    fun deleteAdmin(email: String?){
+        _isLoading.value = true
+        val adminDb = FirebaseConstants.firebaseDb.collection("admin").whereEqualTo("email", email)
+        adminDb.get().addOnCompleteListener {
+
+            if (it.isSuccessful){
+                val adminId = it.result?.documents?.get(0)?.id
+
+                adminId?.let { it1 ->
+
+                    FirebaseConstants.firebaseDb.collection("admin").document(it1).delete().addOnCompleteListener { task ->
+
+                        _isLoading.value = false
+
+                        if (task.isSuccessful){
+                            _msg.value = "Admin berhasil dihapus!"
+                        }
+                        else{
+                            _msg.value = task.exception?.message
+                        }
+
+                    }
+
+                }
+
+            }
+            else{
+                _msg.value = it.exception?.message
+            }
+
+        }
     }
 
 }

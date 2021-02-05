@@ -36,31 +36,41 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        tools:text="Rafli Andreansyah"
-        android:textSize="18sp"
-        android:fontFamily="@font/roboto_regular"
-        android:textColor="@color/colorTextPrimary"
-        android:maxLines="1"
+        android:layout_marginEnd="16dp"
         android:ellipsize="end"
+        android:fontFamily="@font/roboto_regular"
+        android:maxLines="1"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/tvItemAdminEmail"
-        app:layout_constraintEnd_toStartOf="@+id/guideline19"
+        app:layout_constraintEnd_toStartOf="@+id/btnOptionAdmin"
         app:layout_constraintStart_toEndOf="@+id/imgItemAdmin"
         app:layout_constraintTop_toTopOf="@+id/imgItemAdmin"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Rafli Andreansyah" />
 
     <TextView
         android:id="@+id/tvItemAdminEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        tools:text="rafliandreansyah@gmail.com"
-        android:fontFamily="@font/roboto_light"
-        android:textColor="@color/colorTextSecondary"
-        android:maxLines="1"
         android:ellipsize="end"
+        android:fontFamily="@font/roboto_light"
+        android:maxLines="1"
+        android:textColor="@color/colorTextSecondary"
         app:layout_constraintBottom_toBottomOf="@+id/imgItemAdmin"
-        app:layout_constraintEnd_toStartOf="@+id/guideline19"
+        app:layout_constraintEnd_toEndOf="@+id/tvItemAdminName"
         app:layout_constraintStart_toStartOf="@+id/tvItemAdminName"
-        app:layout_constraintTop_toBottomOf="@+id/tvItemAdminName" />
+        app:layout_constraintTop_toBottomOf="@+id/tvItemAdminName"
+        tools:text="rafliandreansyah@gmail.com" />
+
+    <ImageView
+        android:id="@+id/btnOptionAdmin"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_option"
+        app:layout_constraintBottom_toBottomOf="@+id/tvItemAdminName"
+        app:layout_constraintEnd_toStartOf="@+id/guideline19"
+        app:layout_constraintTop_toTopOf="@+id/tvItemAdminName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

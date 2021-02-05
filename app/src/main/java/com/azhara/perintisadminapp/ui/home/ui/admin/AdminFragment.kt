@@ -11,10 +11,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.azhara.perintisadminapp.R
 import com.azhara.perintisadminapp.databinding.FragmentAdminBinding
 import com.azhara.perintisadminapp.databinding.FragmentMitraBinding
+import com.azhara.perintisadminapp.entity.AdminData
 import com.azhara.perintisadminapp.ui.home.HomeActivity
 import com.azhara.perintisadminapp.ui.home.ui.admin.adapter.AdminAdapter
+import com.azhara.perintisadminapp.ui.home.ui.admin.adapter.OnItemClickedListener
 import com.azhara.perintisadminapp.ui.home.ui.mitra.MitraViewModel
 import com.azhara.perintisadminapp.ui.home.ui.mitra.adapter.MitraAdapter
+import com.azhara.perintisadminapp.utils.Helper
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -48,6 +51,8 @@ class AdminFragment : Fragment(), View.OnClickListener {
         setDataAdmin()
         isLoading()
         msg()
+        setOnItemClicked()
+
     }
 
     private fun setDataAdmin(){
@@ -74,12 +79,18 @@ class AdminFragment : Fragment(), View.OnClickListener {
     private fun msg(){
         adminViewModel.msg.observe(viewLifecycleOwner, { msg ->
             binding?.containerAdmin?.let {
-                Snackbar.make(it, msg, Snackbar.LENGTH_LONG).setAction("Hide"){
-
-                }.show()
+                Helper.snackbar(msg, it)
             }
         })
 
+    }
+
+    private fun setOnItemClicked(){
+        adminAdapter.setOnItemClicked(object : OnItemClickedListener{
+            override fun onItemClicked(adminData: AdminData) {
+                adminViewModel.deleteAdmin(adminData.email)
+            }
+        })
     }
 
     override fun onDestroy() {
