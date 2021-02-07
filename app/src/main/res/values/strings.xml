@@ -82,4 +82,8 @@
     <string name="travel_name">Travel Name</string>
     <string name="edit_mitra">Edit Mitra</string>
     <string name="delete_mitra">Delete Mitra</string>
+    <string name="informasi_mobil">Informasi Mobil</string>
+    <string name="no_mobil">No. Mobil</string>
+    <string name="kapasitas_koper">Kapasitas Koper</string>
+    <string name="harga_perhari">Harga perhari</string>
 </resources>

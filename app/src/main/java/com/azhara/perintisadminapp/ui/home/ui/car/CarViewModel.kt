@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.azhara.perintisadminapp.entity.CarsData
+import com.azhara.perintisadminapp.entity.UserData
 import com.azhara.perintisadminapp.utils.FirebaseConstants
 
 class CarViewModel : ViewModel() {
@@ -11,6 +12,9 @@ class CarViewModel : ViewModel() {
 
     private val _carData = MutableLiveData<List<CarsData>>()
     val carData = _carData
+
+    private val _userData = MutableLiveData<UserData>()
+    val userData = _userData
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading = _isLoading
@@ -29,6 +33,21 @@ class CarViewModel : ViewModel() {
             if (value != null){
                 _carData.postValue(value.toObjects(CarsData::class.java))
             }
+        }
+    }
+
+    fun getDataUser(userId: String?){
+        _isLoading.value = true
+        val db = userId?.let { FirebaseConstants.firebaseDb.collection("users").document(it) }
+        db?.get()?.addOnCompleteListener { task ->
+            _isLoading.value = false
+            if (task.isSuccessful){
+                _userData.postValue(task.result?.toObject(UserData::class.java))
+            }
+            else{
+                _msg.value = task.exception?.message
+            }
+
         }
     }
 }

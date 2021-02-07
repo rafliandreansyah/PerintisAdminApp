@@ -23,6 +23,12 @@ class CarAdapter : ListAdapter<CarsData, CarAdapter.CarViewHolder>(DIFF_UTIL){
         }
     }
 
+    private var onItemClickListener: OnItemClickListener? = null
+
+    fun setOnItemClicked(onItemClickListener: OnItemClickListener?){
+        this.onItemClickListener = onItemClickListener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarViewHolder {
         val binding = ItemCarBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return CarViewHolder(binding)
@@ -46,8 +52,15 @@ class CarAdapter : ListAdapter<CarsData, CarAdapter.CarViewHolder>(DIFF_UTIL){
                     tvItemCarStatusEnabled.setTextColor(ContextCompat.getColor(itemView.context, R.color.colorRed))
                 }
                 tvItemCarYear.text = "${carData.year}"
+                itemCar.setOnClickListener {
+                    onItemClickListener?.onItemClicked(carData)
+                }
             }
         }
     }
 
+}
+
+interface OnItemClickListener{
+    fun onItemClicked(carData: CarsData)
 }

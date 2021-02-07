@@ -1,58 +1,139 @@
 package com.azhara.perintisadminapp.ui.home.ui.car
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import com.azhara.perintisadminapp.R
+import com.azhara.perintisadminapp.databinding.FragmentDetailCarBinding
+import com.azhara.perintisadminapp.entity.CarsData
+import com.azhara.perintisadminapp.entity.UserData
+import com.azhara.perintisadminapp.ui.home.HomeActivity
+import com.azhara.perintisadminapp.ui.home.ui.bookingcar.DetailBookingCarFragmentArgs
+import com.azhara.perintisadminapp.utils.Helper
+import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class DetailCarFragment : Fragment(), View.OnClickListener {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DetailCarFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class DetailCarFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private val carViewModel: CarViewModel by viewModels()
+    private var carData: CarsData? = null
+    private var phoneNumber: String? = null
+
+    private var _binding: FragmentDetailCarBinding? = null
+    private val binding get() = _binding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        carData = DetailCarFragmentArgs.fromBundle(arguments as Bundle).carData
+        carViewModel.getDataUser(carData?.partnerId)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail_car, container, false)
+        _binding = FragmentDetailCarBinding.inflate(inflater, container, false)
+        return binding?.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DetailCarFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-                DetailCarFragment().apply {
-                    arguments = Bundle().apply {
-                        putString(ARG_PARAM1, param1)
-                        putString(ARG_PARAM2, param2)
-                    }
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding?.btnCallDetailCar?.setOnClickListener(this)
+
+        getDataUser()
+        msgInfo()
+        isLoading()
     }
+
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.btnCallDetailCar -> {
+                val intent = Intent(Intent.ACTION_DIAL)
+                intent.data = Uri.parse("tel:$phoneNumber")
+                startActivity(intent)
+            }
+
+        }
+    }
+
+    private fun getDataUser(){
+        carViewModel.userData.observe(viewLifecycleOwner, { userData ->
+            setData(userData)
+        })
+    }
+
+    private fun setData(userData: UserData){
+
+        with(binding){
+            //Set data owner car
+            phoneNumber = userData.phone
+            this?.tvDetailCarOwnerEmail?.text = userData.email
+            this?.tvDetailCarOwnerName?.text = userData.name
+            this?.tvDetailCarOwnerPhone?.text = userData.phone
+            if (userData.imgUrl != null && userData.imgUrl != ""){
+                context?.let { this?.imgDetailCarOwnerImage?.let { it1 -> Glide.with(it).load(userData.imgUrl).into(it1) } }
+            }
+
+            //Set data car
+            if (carData?.imgUrl != null && carData?.imgUrl != ""){
+                context?.let { this?.imgDetailCar?.let { it1 -> Glide.with(it).load(carData?.imgUrl).into(it1) } }
+            }
+
+            if (carData?.statusReady == true){
+                this?.tvDetailCarStatusActive?.text = "Enable"
+                this?.tvDetailCarStatusActive?.setTextColor(context?.let { ContextCompat.getColorStateList(it, R.color.colorGreen) })
+            }
+            else{
+                this?.tvDetailCarStatusActive?.text = "Disable"
+                this?.tvDetailCarStatusActive?.setTextColor(context?.let { ContextCompat.getColorStateList(it, R.color.colorRed) })
+
+            }
+
+            if (carData?.gear == 0){
+                this?.tvDetailCarTransmission?.text = "Manual"
+            }
+            else{
+                this?.tvDetailCarTransmission?.text = "Automatic"
+            }
+
+            this?.tvDetailCarName?.text = carData?.carName
+            this?.tvDetailCarYear?.text = "Tahun ${carData?.year}"
+            this?.tvDetailCarCapacity?.text = "${carData?.capacity} Orang"
+            this?.tvDetailCarNoRegister?.text = carData?.carNumberPlate.toString()
+            this?.tvDetailCarCapacityLuggage?.text = "${carData?.luggage.toString()} Koper"
+            this?.tvDetailCarTotalPrice?.text = "Rp. ${carData?.price?.let { Helper.currencyFormat(it) }}"
+        }
+
+    }
+
+    private fun isLoading(){
+        carViewModel.isLoading.observe(viewLifecycleOwner, { isLoading ->
+            if (isLoading == true){
+                (activity as HomeActivity).isLoading(true)
+            }else{
+                (activity as HomeActivity).isLoading(false  )
+            }
+        })
+    }
+
+    private fun msgInfo(){
+        carViewModel.msg.observe(viewLifecycleOwner, { msg ->
+            if (msg != null){
+                binding?.containerDetailCar?.let { Helper.snackbar(msg, it) }
+            }
+        })
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
 }

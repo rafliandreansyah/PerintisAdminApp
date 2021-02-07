@@ -15,7 +15,11 @@
         android:id="@+id/nav_car"
         android:name="com.azhara.perintisadminapp.ui.home.ui.car.CarFragment"
         android:label="@string/mobil"
-        tools:layout="@layout/fragment_car" />
+        tools:layout="@layout/fragment_car" >
+        <action
+            android:id="@+id/action_nav_car_to_detailCarFragment"
+            app:destination="@id/detailCarFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_tour"
@@ -116,5 +120,16 @@
             android:id="@+id/action_addMitraFragment_to_nav_mitra"
             app:destination="@id/nav_mitra"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailCarFragment"
+        android:name="com.azhara.perintisadminapp.ui.home.ui.car.DetailCarFragment"
+        android:label="Detail Mobil"
+        tools:layout="@layout/fragment_detail_car">
+        <argument
+            android:name="carData"
+            android:defaultValue="@null"
+            app:argType="com.azhara.perintisadminapp.entity.CarsData"
+            app:nullable="true" />
     </fragment>
 </navigation>

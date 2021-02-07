@@ -8,10 +8,13 @@ import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azhara.perintisadminapp.databinding.FragmentCarBinding
+import com.azhara.perintisadminapp.entity.CarsData
 import com.azhara.perintisadminapp.ui.home.HomeActivity
 import com.azhara.perintisadminapp.ui.home.ui.car.adapter.CarAdapter
+import com.azhara.perintisadminapp.ui.home.ui.car.adapter.OnItemClickListener
 import com.google.android.material.snackbar.Snackbar
 
 class CarFragment : Fragment() {
@@ -66,6 +69,7 @@ class CarFragment : Fragment() {
         setDataCar()
         isLoading()
         msgInfo()
+        setOnItemClicked()
     }
 
     private fun setDataCar(){
@@ -76,6 +80,16 @@ class CarFragment : Fragment() {
                 rvCar.setHasFixedSize(true)
                 rvCar.adapter = carAdapter
             }
+        })
+    }
+
+    private fun setOnItemClicked(){
+        carAdapter.setOnItemClicked(object : OnItemClickListener{
+            override fun onItemClicked(carData: CarsData) {
+                val action = CarFragmentDirections.actionNavCarToDetailCarFragment(carData)
+                view?.findNavController()?.navigate(action)
+            }
+
         })
     }
 
