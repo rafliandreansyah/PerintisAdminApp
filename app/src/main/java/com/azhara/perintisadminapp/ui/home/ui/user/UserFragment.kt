@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azhara.perintisadminapp.R
@@ -24,9 +26,28 @@ class UserFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding
 
+    private var backPressedTime: Long? = 0
+    private lateinit var toast: Toast
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         userViewModel.getUser()
+
+        // This callback will only be called when MyFragment is at least Started.
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            if (backPressedTime!! + 2000 > System.currentTimeMillis()) {
+                toast.cancel()
+                activity?.moveTaskToBack(true)
+                activity?.finish()
+            }
+            else {
+                toast = Toast.makeText(context, "Press back again to exit", Toast.LENGTH_SHORT)
+                toast.show()
+            }
+            backPressedTime = System.currentTimeMillis()
+        }
+        // The callback can be enabled or disabled here or in the lambda
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

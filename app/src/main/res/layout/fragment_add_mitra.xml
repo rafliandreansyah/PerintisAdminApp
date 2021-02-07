@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/containerAddMitra"
+    tools:context=".ui.home.ui.mitra.AddMitraFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutEdtEmailAddMitra"
+            style="@style/EditTextOutline"
+            android:layout_marginTop="24dp"
+            android:hint="@string/email"
+            app:layout_constraintBottom_toTopOf="@+id/layoutEdtNameAddMitra"
+            app:layout_constraintEnd_toStartOf="@+id/guideline40"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline37"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtEmailAddMitra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutEdtNameAddMitra"
+            style="@style/EditTextOutline"
+            android:layout_marginTop="24dp"
+            android:hint="@string/nama_mitra"
+            app:layout_constraintBottom_toTopOf="@+id/layoutEdtPhoneAddMitra"
+            app:layout_constraintEnd_toStartOf="@+id/guideline40"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline37"
+            app:layout_constraintTop_toBottomOf="@+id/layoutEdtEmailAddMitra">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtNameAddMitra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutEdtPhoneAddMitra"
+            style="@style/EditTextOutline"
+            android:layout_marginTop="24dp"
+            android:hint="@string/telephone"
+            app:layout_constraintBottom_toTopOf="@+id/layoutEdtAddressAddMitra"
+            app:layout_constraintEnd_toStartOf="@+id/guideline40"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline37"
+            app:layout_constraintTop_toBottomOf="@+id/layoutEdtNameAddMitra">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtPhoneAddMitra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutEdtAddressAddMitra"
+            style="@style/EditTextOutline"
+            android:layout_marginTop="24dp"
+            android:hint="@string/alamat"
+            app:layout_constraintBottom_toTopOf="@+id/layoutEdtTravelNameAddMitra"
+            app:layout_constraintEnd_toStartOf="@+id/guideline40"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline37"
+            app:layout_constraintTop_toBottomOf="@+id/layoutEdtPhoneAddMitra">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtAddressAddMitra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutEdtTravelNameAddMitra"
+            style="@style/EditTextOutline"
+            android:layout_marginTop="24dp"
+            android:hint="@string/travel_name"
+            app:layout_constraintBottom_toTopOf="@+id/layoutEdtPasswordAddMitra"
+            app:layout_constraintEnd_toStartOf="@+id/guideline40"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline37"
+            app:layout_constraintTop_toBottomOf="@+id/layoutEdtAddressAddMitra">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtTravelNameAddMitra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutEdtPasswordAddMitra"
+            style="@style/EditTextOutline"
+            android:layout_marginTop="24dp"
+            android:hint="@string/password"
+            app:layout_constraintBottom_toTopOf="@+id/layoutEdtConfirmPasswordAddMitra"
+            app:layout_constraintEnd_toStartOf="@+id/guideline40"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline37"
+            app:layout_constraintTop_toBottomOf="@+id/layoutEdtTravelNameAddMitra">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtPasswordAddMitra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutEdtConfirmPasswordAddMitra"
+            style="@style/EditTextOutline"
+            android:layout_marginTop="24dp"
+            android:hint="@string/konfirmasi_password"
+            app:layout_constraintBottom_toTopOf="@+id/btnAddMitra"
+            app:layout_constraintEnd_toStartOf="@+id/guideline40"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline37"
+            app:layout_constraintTop_toBottomOf="@+id/layoutEdtPasswordAddMitra">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtConfirmPasswordAddMitra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnAddMitra"
+            style="@style/ButtonPrimary"
+            android:layout_marginTop="24dp"
+            android:enabled="false"
+            android:text="@string/tambah_mitra"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline40"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline37"
+            app:layout_constraintTop_toBottomOf="@+id/layoutEdtConfirmPasswordAddMitra"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline37"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline40"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

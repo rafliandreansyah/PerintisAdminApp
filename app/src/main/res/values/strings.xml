@@ -76,4 +76,10 @@
     <string name="konfirmasi_password">Konfirmasi Password</string>
     <string name="telephone">Telephone</string>
     <string name="nama_admin">Nama Admin</string>
+    <string name="nama_mitra">Nama Mitra</string>
+    <string name="alamat">Alamat</string>
+    <string name="tambah_mitra">Tambah Mitra</string>
+    <string name="travel_name">Travel Name</string>
+    <string name="edit_mitra">Edit Mitra</string>
+    <string name="delete_mitra">Delete Mitra</string>
 </resources>

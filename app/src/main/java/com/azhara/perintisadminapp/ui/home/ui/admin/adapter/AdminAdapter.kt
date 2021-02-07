@@ -1,7 +1,6 @@
 package com.azhara.perintisadminapp.ui.home.ui.admin.adapter
 
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
@@ -9,9 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.azhara.perintisadminapp.R
 import com.azhara.perintisadminapp.databinding.ItemAdminBinding
-import com.azhara.perintisadminapp.databinding.ItemUserBinding
 import com.azhara.perintisadminapp.entity.AdminData
-import com.azhara.perintisadminapp.entity.UserData
 import com.bumptech.glide.Glide
 
 class AdminAdapter : ListAdapter<AdminData, AdminAdapter.AdminViewHolder>(DIFF_UTIL){
@@ -50,7 +47,7 @@ class AdminAdapter : ListAdapter<AdminData, AdminAdapter.AdminViewHolder>(DIFF_U
                 }
                 btnOptionAdmin.setOnClickListener {
                     val popUpMenu = PopupMenu(itemView.context, btnOptionAdmin)
-                    popUpMenu.inflate(R.menu.list_admin)
+                    popUpMenu.inflate(R.menu.menu_list_admin)
 
                     popUpMenu.setOnMenuItemClickListener {
                         when(it.itemId){
