@@ -86,4 +86,5 @@
     <string name="no_mobil">No. Mobil</string>
     <string name="kapasitas_koper">Kapasitas Koper</string>
     <string name="harga_perhari">Harga perhari</string>
+    <string name="hapus_mobile">Hapus Mobil</string>
 </resources>

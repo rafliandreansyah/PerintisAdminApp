@@ -15,6 +15,8 @@ import com.azhara.perintisadminapp.entity.CarsData
 import com.azhara.perintisadminapp.ui.home.HomeActivity
 import com.azhara.perintisadminapp.ui.home.ui.car.adapter.CarAdapter
 import com.azhara.perintisadminapp.ui.home.ui.car.adapter.OnItemClickListener
+import com.azhara.perintisadminapp.ui.home.ui.car.adapter.OnMenuClickListener
+import com.azhara.perintisadminapp.utils.Helper
 import com.google.android.material.snackbar.Snackbar
 
 class CarFragment : Fragment() {
@@ -70,6 +72,7 @@ class CarFragment : Fragment() {
         isLoading()
         msgInfo()
         setOnItemClicked()
+        setOnMenuClicked()
     }
 
     private fun setDataCar(){
@@ -93,6 +96,27 @@ class CarFragment : Fragment() {
         })
     }
 
+    private fun setOnMenuClicked(){
+        carAdapter.setOnMenuItemClicked(object : OnMenuClickListener{
+            override fun onMenuClicked(carData: CarsData, typeAction: String?) {
+                if (typeAction == "edit"){
+
+                    if (carData.statusReady == true){
+                        carViewModel.editStatusActive(carData.carNumberPlate, false)
+                    }
+                    else{
+                        carViewModel.editStatusActive(carData.carNumberPlate, true)
+                    }
+
+                }
+                else{
+                    carViewModel.delete(carData.carNumberPlate)
+                }
+            }
+
+        })
+    }
+
     private fun isLoading(){
         carViewModel.isLoading.observe(viewLifecycleOwner, { isLoading ->
             if (isLoading == true){
@@ -106,9 +130,7 @@ class CarFragment : Fragment() {
     private fun msgInfo(){
         carViewModel.msg.observe(viewLifecycleOwner, { msg ->
             if (msg != null){
-                Snackbar.make(binding.containerCar, msg, Snackbar.LENGTH_LONG).setAction("Hide"){
-
-                }.show()
+                Helper.snackbar(msg, binding.containerCar)
             }
         })
 

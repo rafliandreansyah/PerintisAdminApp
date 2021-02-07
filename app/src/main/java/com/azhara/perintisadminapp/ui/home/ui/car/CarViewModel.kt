@@ -50,4 +50,70 @@ class CarViewModel : ViewModel() {
 
         }
     }
+
+    fun editStatusActive(carNoRegister: String?, isActive: Boolean?){
+        _isLoading.value = true
+        val carDB = FirebaseConstants.firebaseDb.collection("cars")
+        val loadCar = carDB.whereEqualTo("carNumberPlate", carNoRegister)
+        loadCar.get().addOnCompleteListener { loadCarTask ->
+
+            if (loadCarTask.isSuccessful){
+                //Car id
+                val carId = loadCarTask.result?.documents?.get(0)?.id
+
+                //Edit status active car
+                carId?.let { carDB.document(it).update("statusReady", isActive) }?.addOnCompleteListener { editTask ->
+                    _isLoading.value = false
+                    if (editTask.isSuccessful){
+
+                        if (isActive == false){
+                            _msg.value = "Berhasil di non-aktifkan"
+                        }
+                        else{
+                            _msg.value = "Berhasil di aktifkan"
+                        }
+
+                    }
+                    else{
+                        _msg.value = editTask.exception?.message
+                    }
+
+                }
+            }
+            else{
+                _isLoading.value = false
+                _msg.value = loadCarTask.exception?.message
+            }
+
+        }
+    }
+
+    fun delete(carNoRegister: String?){
+        _isLoading.value = true
+        val carDb = FirebaseConstants.firebaseDb.collection("cars")
+        val loadCar = carDb.whereEqualTo("carNumberPlate", carNoRegister)
+        loadCar.get().addOnCompleteListener { taskLoadCar ->
+
+            if (taskLoadCar.isSuccessful){
+                //carId
+                val carId = taskLoadCar.result?.documents?.get(0)?.id
+
+                //deleteCar
+                carId?.let { carDb.document(it).delete() }?.addOnCompleteListener { deleteCar ->
+                    _isLoading.value = false
+                    if (deleteCar.isSuccessful){
+                        _msg.value = "Delete berhasil"
+                    }
+                    else{
+                        _msg.value = deleteCar.exception?.message
+                    }
+                }
+            }
+            else{
+                _isLoading.value = false
+                msg.value = taskLoadCar.exception?.message
+            }
+
+        }
+    }
 }
