@@ -87,4 +87,23 @@
     <string name="kapasitas_koper">Kapasitas Koper</string>
     <string name="harga_perhari">Harga perhari</string>
     <string name="hapus_mobile">Hapus Mobil</string>
+    <string name="kapasitas_orang">Kapasitas Orang</string>
+    <string name="harga_perhari_dalam_rupiah">Harga Perhari Dalam Rupiah</string>
+    <string name="tambah_mobil">Tambah Mobil</string>
+    <string name="gambar_mobil">Gambar Mobil</string>
+    <string name="nomer_registrasi">Nomer Registrasi</string>
+    <string name="nama_tour">Nama Tour</string>
+    <string name="lokasi_tour">Lokasi Tour</string>
+    <string name="harga_per_orang">Harga Per Orang</string>
+    <string name="kendaraan_tour">Kendaraan Tour</string>
+    <string name="kapasitas_tour">Kapasitas Tour</string>
+    <string name="rentang_waktu_tour">Rentang Waktu Tour</string>
+    <string name="durasi_tour">Durasi Tour</string>
+    <string name="wisata_yang_dikunjungi">Wisata Yang Dikunjungi</string>
+    <string name="tambah">Tambah</string>
+    <string name="tambah_tour">Tambah Tour</string>
+    <string name="gambar_tour">Gambar Tour</string>
+    <string name="fasilitas">Fasilitas</string>
+    <string name="tambah_data">Tambah Data</string>
+    <string name="hapus_wisata">Hapus Wisata</string>
 </resources>

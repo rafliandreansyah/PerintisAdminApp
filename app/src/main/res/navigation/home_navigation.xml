@@ -19,13 +19,20 @@
         <action
             android:id="@+id/action_nav_car_to_detailCarFragment"
             app:destination="@id/detailCarFragment" />
+        <action
+            android:id="@+id/action_nav_car_to_addCarFragment"
+            app:destination="@id/addCarFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/nav_tour"
         android:name="com.azhara.perintisadminapp.ui.home.ui.tour.TourFragment"
         android:label="@string/tour"
-        tools:layout="@layout/fragment_tour" />
+        tools:layout="@layout/fragment_tour" >
+        <action
+            android:id="@+id/action_nav_tour_to_addTourFragment"
+            app:destination="@id/addTourFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_admin"
         android:name="com.azhara.perintisadminapp.ui.home.ui.admin.AdminFragment"
@@ -131,5 +138,24 @@
             android:defaultValue="@null"
             app:argType="com.azhara.perintisadminapp.entity.CarsData"
             app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCarFragment"
+        android:name="com.azhara.perintisadminapp.ui.home.ui.car.AddCarFragment"
+        android:label="Tambah Mobil"
+        tools:layout="@layout/fragment_add_car" >
+        <action
+            android:id="@+id/action_addCarFragment_to_nav_car"
+            app:destination="@id/nav_car" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTourFragment"
+        android:name="com.azhara.perintisadminapp.ui.home.ui.tour.AddTourFragment"
+        android:label="Tambah Tour"
+        tools:layout="@layout/fragment_add_tour" >
+        <action
+            android:id="@+id/action_addTourFragment_to_nav_tour"
+            app:destination="@id/nav_tour"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

@@ -44,15 +44,25 @@
         android:id="@+id/tvItemTourStatusEnabled"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/roboto_regular"
         android:textColor="@color/colorGreen"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/tvItemTourName"
-        app:layout_constraintEnd_toStartOf="@+id/guideline17"
+        app:layout_constraintEnd_toStartOf="@+id/btnOptionTour"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tvItemTourName"
         app:layout_constraintTop_toTopOf="@+id/tvItemTourName"
         tools:text="Enable" />
+
+    <ImageView
+        android:id="@+id/btnOptionTour"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_option"
+        app:layout_constraintBottom_toBottomOf="@+id/tvItemTourName"
+        app:layout_constraintEnd_toStartOf="@+id/guideline17"
+        app:layout_constraintTop_toTopOf="@+id/tvItemTourName" />
 
     <TextView
         android:id="@+id/textView5"

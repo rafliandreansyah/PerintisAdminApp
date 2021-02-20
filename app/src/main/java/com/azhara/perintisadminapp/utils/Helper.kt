@@ -1,9 +1,11 @@
 package com.azhara.perintisadminapp.utils
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.view.View
 import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
+import java.io.ByteArrayOutputStream
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -46,4 +48,35 @@ object Helper{
     fun toast(msg: String?, context: Context){
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
     }
+
+    // resize filebitmap with specific size
+    private fun resizeBitmap(image: Bitmap, maxSize: Int): Bitmap {
+        var width = image.width //get width image
+        var height = image.height //get heigh image
+
+        val bitMapRatio = width.toFloat() / height.toFloat()
+        if (bitMapRatio > 1) {
+            width = maxSize
+            height = (width / bitMapRatio).toInt()
+        } else {
+            height = maxSize
+            width = (height * bitMapRatio).toInt()
+        }
+
+        return Bitmap.createScaledBitmap(image, width, height, true)
+    }
+
+    //Change format bitmap to byte Array
+    fun imageByteArray(bitmap: Bitmap?, maxSize: Int?): ByteArray {
+        val bitmapCompress = bitmap?.let { maxSize?.let { it1 -> resizeBitmap(it, it1) } } //resize bitmap file
+        val baos = ByteArrayOutputStream()
+        bitmapCompress?.compress(
+            Bitmap.CompressFormat.JPEG,
+            100,
+            baos
+        ) //compress bitmap extension to JPEG
+
+        return baos.toByteArray()
+    }
+
 }

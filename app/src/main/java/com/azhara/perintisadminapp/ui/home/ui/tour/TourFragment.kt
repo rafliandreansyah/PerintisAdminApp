@@ -8,14 +8,16 @@ import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.azhara.perintisadminapp.R
 import com.azhara.perintisadminapp.databinding.FragmentTourBinding
+import com.azhara.perintisadminapp.entity.TourData
 import com.azhara.perintisadminapp.ui.home.HomeActivity
+import com.azhara.perintisadminapp.ui.home.ui.tour.adapter.TourAdapter
 import com.azhara.perintisadminapp.utils.Helper
-import com.google.android.material.snackbar.Snackbar
 
-class TourFragment : Fragment() {
+class TourFragment : Fragment(), View.OnClickListener {
 
     private lateinit var tourAdapter: TourAdapter
     private val tourViewModel: TourViewModel by viewModels()
@@ -63,11 +65,14 @@ class TourFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.fabAddTour.setOnClickListener(this)
+
         tourAdapter = TourAdapter()
 
         setDataCar()
         isLoading()
         msgInfo()
+        setOnMenuItemClicked()
     }
 
     private fun setDataCar(){
@@ -103,5 +108,35 @@ class TourFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun setOnMenuItemClicked(){
+        tourAdapter.setOnMenuItemClicked(object : TourAdapter.OnMenuClickListener{
+            override fun onMenuClicked(tourData: TourData, typeAction: String?) {
+
+                when(typeAction){
+                    "change status" -> {
+                        if (tourData.statusReady == true){
+                            tourViewModel.changeStatus(tourData, false)
+                        }
+                        else{
+                            tourViewModel.changeStatus(tourData, true)
+                        }
+
+                    }
+                    "delete" -> {
+                        tourViewModel.deleteTour(tourData)
+                    }
+                }
+
+            }
+
+        })
+    }
+
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.fabAddTour -> view?.findNavController()?.navigate(R.id.action_nav_tour_to_addTourFragment)
+        }
     }
 }
