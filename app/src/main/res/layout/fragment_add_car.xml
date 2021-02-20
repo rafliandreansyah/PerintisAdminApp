@@ -1,14 +1,257 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.ui.car.AddCarFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:paddingBottom="40dp"
+        android:id="@+id/containerAddCar">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline41"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline42"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/gambar_mobil"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/frameLayout"
+            app:layout_constraintEnd_toStartOf="@+id/guideline42"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline41"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/layoutEdtOwnerAddCar"
+            app:layout_constraintEnd_toStartOf="@+id/guideline42"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline41"
+            app:layout_constraintTop_toBottomOf="@+id/textView11">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/common_google_signin_btn_text_dark_disabled">
+
+                <ImageView
+                    android:id="@+id/imgAddCar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    tools:src="@color/colorTextPrimary" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabAddImageAddCar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="16dp"
+                android:backgroundTint="@color/colorGreen"
+                android:contentDescription="@string/fab_add_car"
+                app:srcCompat="@drawable/ic_add"
+                app:tint="@color/white" />
+
+        </FrameLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutEdtOwnerAddCar"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/pemilik"
+            app:layout_constraintBottom_toTopOf="@+id/layoutEdtCarTypeAddCar"
+            app:layout_constraintEnd_toStartOf="@+id/guideline42"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline41"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout">
+
+            <AutoCompleteTextView
+                android:id="@+id/edtOwnerAddCar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutEdtCarTypeAddCar"
+            style="@style/EditTextOutline"
+            android:layout_marginTop="16dp"
+            android:hint="@string/type_mobil"
+            app:layout_constraintBottom_toTopOf="@+id/layoutEdtTransmissionAddCar"
+            app:layout_constraintEnd_toStartOf="@+id/guideline42"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline41"
+            app:layout_constraintTop_toBottomOf="@+id/layoutEdtOwnerAddCar">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtCarTypeAddCar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutEdtTransmissionAddCar"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/transmisi"
+            app:layout_constraintBottom_toTopOf="@+id/layoutEdtCarYearAddCar"
+            app:layout_constraintEnd_toStartOf="@+id/guideline42"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline41"
+            app:layout_constraintTop_toBottomOf="@+id/layoutEdtCarTypeAddCar">
+
+            <AutoCompleteTextView
+                android:id="@+id/edtTransmissionAddCar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutEdtCarYearAddCar"
+            style="@style/EditTextOutline"
+            android:layout_marginTop="16dp"
+            android:hint="@string/tahun"
+            app:layout_constraintBottom_toTopOf="@+id/layoutEdtNoRegisterAddCar"
+            app:layout_constraintEnd_toStartOf="@+id/guideline42"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline41"
+            app:layout_constraintTop_toBottomOf="@+id/layoutEdtTransmissionAddCar">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtCarYearAddCar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutEdtNoRegisterAddCar"
+            style="@style/EditTextOutline"
+            android:layout_marginTop="16dp"
+            android:hint="@string/nomer_registrasi"
+            app:layout_constraintBottom_toTopOf="@+id/layoutEdtCapacityPersonAddCar"
+            app:layout_constraintEnd_toStartOf="@+id/guideline42"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline41"
+            app:layout_constraintTop_toBottomOf="@+id/layoutEdtCarYearAddCar">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtNoRegisterAddCar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutEdtCapacityPersonAddCar"
+            style="@style/EditTextOutline"
+            android:layout_marginTop="16dp"
+            android:hint="@string/kapasitas_orang"
+            app:layout_constraintBottom_toTopOf="@+id/layoutEdtCapacityLuggageAddCar"
+            app:layout_constraintEnd_toStartOf="@+id/guideline42"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline41"
+            app:layout_constraintTop_toBottomOf="@+id/layoutEdtNoRegisterAddCar">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtCapacityPersonAddCar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutEdtCapacityLuggageAddCar"
+            style="@style/EditTextOutline"
+            android:layout_marginTop="16dp"
+            android:hint="@string/kapasitas_koper"
+            app:layout_constraintBottom_toTopOf="@+id/layoutEdtPriceAddCar"
+            app:layout_constraintEnd_toStartOf="@+id/guideline42"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline41"
+            app:layout_constraintTop_toBottomOf="@+id/layoutEdtCapacityPersonAddCar">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtCapacityLuggageAddCar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutEdtPriceAddCar"
+            style="@style/EditTextOutline"
+            android:layout_marginTop="16dp"
+            android:hint="@string/harga_perhari_dalam_rupiah"
+            app:layout_constraintBottom_toTopOf="@+id/btnAddCar"
+            app:layout_constraintEnd_toStartOf="@+id/guideline42"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline41"
+            app:layout_constraintTop_toBottomOf="@+id/layoutEdtCapacityLuggageAddCar">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtPriceAddCar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnAddCar"
+            style="@style/ButtonPrimary"
+            android:layout_marginTop="32dp"
+            android:enabled="false"
+            android:text="@string/tambah_mobil"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline42"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline41"
+            app:layout_constraintTop_toBottomOf="@+id/layoutEdtPriceAddCar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

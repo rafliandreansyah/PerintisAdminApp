@@ -12,12 +12,11 @@ import androidx.fragment.app.viewModels
 import com.azhara.perintisadminapp.R
 import com.azhara.perintisadminapp.databinding.FragmentDetailCarBinding
 import com.azhara.perintisadminapp.entity.CarsData
+import com.azhara.perintisadminapp.entity.MitraData
 import com.azhara.perintisadminapp.entity.UserData
 import com.azhara.perintisadminapp.ui.home.HomeActivity
-import com.azhara.perintisadminapp.ui.home.ui.bookingcar.DetailBookingCarFragmentArgs
 import com.azhara.perintisadminapp.utils.Helper
 import com.bumptech.glide.Glide
-import com.google.android.material.snackbar.Snackbar
 
 class DetailCarFragment : Fragment(), View.OnClickListener {
 
@@ -31,7 +30,7 @@ class DetailCarFragment : Fragment(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         carData = DetailCarFragmentArgs.fromBundle(arguments as Bundle).carData
-        carViewModel.getDataUser(carData?.partnerId)
+        carViewModel.getDataPartner(carData?.partnerId)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -63,21 +62,21 @@ class DetailCarFragment : Fragment(), View.OnClickListener {
     }
 
     private fun getDataUser(){
-        carViewModel.userData.observe(viewLifecycleOwner, { userData ->
+        carViewModel.mitraData.observe(viewLifecycleOwner, { userData ->
             setData(userData)
         })
     }
 
-    private fun setData(userData: UserData){
+    private fun setData(mitraData: MitraData){
 
         with(binding){
             //Set data owner car
-            phoneNumber = userData.phone
-            this?.tvDetailCarOwnerEmail?.text = userData.email
-            this?.tvDetailCarOwnerName?.text = userData.name
-            this?.tvDetailCarOwnerPhone?.text = userData.phone
-            if (userData.imgUrl != null && userData.imgUrl != ""){
-                context?.let { this?.imgDetailCarOwnerImage?.let { it1 -> Glide.with(it).load(userData.imgUrl).into(it1) } }
+            phoneNumber = mitraData.phone.toString()
+            this?.tvDetailCarOwnerEmail?.text = mitraData.email
+            this?.tvDetailCarOwnerName?.text = mitraData.owner
+            this?.tvDetailCarOwnerPhone?.text = mitraData.phone.toString()
+            if (mitraData.imgUrl != null && mitraData.imgUrl != ""){
+                context?.let { this?.imgDetailCarOwnerImage?.let { it1 -> Glide.with(it).load(mitraData.imgUrl).into(it1) } }
             }
 
             //Set data car

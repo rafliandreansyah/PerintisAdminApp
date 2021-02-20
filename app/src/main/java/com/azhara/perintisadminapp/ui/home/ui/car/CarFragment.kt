@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.azhara.perintisadminapp.R
 import com.azhara.perintisadminapp.databinding.FragmentCarBinding
 import com.azhara.perintisadminapp.entity.CarsData
 import com.azhara.perintisadminapp.ui.home.HomeActivity
@@ -19,7 +20,7 @@ import com.azhara.perintisadminapp.ui.home.ui.car.adapter.OnMenuClickListener
 import com.azhara.perintisadminapp.utils.Helper
 import com.google.android.material.snackbar.Snackbar
 
-class CarFragment : Fragment() {
+class CarFragment : Fragment(), View.OnClickListener {
 
     private lateinit var carAdapter: CarAdapter
     private val carViewModel: CarViewModel by viewModels()
@@ -65,6 +66,8 @@ class CarFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.fabAddCar.setOnClickListener(this)
 
         carAdapter = CarAdapter()
 
@@ -139,5 +142,11 @@ class CarFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.fabAddCar -> view?.findNavController()?.navigate(R.id.action_nav_car_to_addCarFragment)
+        }
     }
 }
