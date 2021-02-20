@@ -24,6 +24,12 @@ class BookingTourAdapter: ListAdapter<BookingTourData, BookingTourAdapter.Bookin
         }
     }
 
+    private var onItemClickListener: OnItemClickListener? = null
+
+    fun setOnItemClick(onItemClickListener: OnItemClickListener?){
+        this.onItemClickListener = onItemClickListener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookingTourAdapter.BookingTourViewHolder =
             BookingTourViewHolder(ItemBookingTourBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
@@ -45,7 +51,15 @@ class BookingTourAdapter: ListAdapter<BookingTourData, BookingTourAdapter.Bookin
                 }
                 tvItemBookingTourTotalPrice.text = "Rp. ${data.totalPrice?.let { Helper.currencyFormat(it) }}"
                 tvItemBookingTourUserName.text = data.userBookingName
+
+                containerItemBookingTour.setOnClickListener {
+                    onItemClickListener?.onItemClicked(data)
+                }
             }
         }
+    }
+
+    interface OnItemClickListener{
+        fun onItemClicked(data: BookingTourData)
     }
 }

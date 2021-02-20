@@ -8,9 +8,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azhara.perintisadminapp.R
 import com.azhara.perintisadminapp.databinding.FragmentBookingTourBinding
+import com.azhara.perintisadminapp.entity.BookingTourData
 import com.azhara.perintisadminapp.ui.home.HomeActivity
 import com.azhara.perintisadminapp.ui.home.ui.bookingtour.adapter.BookingTourAdapter
 import com.azhara.perintisadminapp.utils.Helper
@@ -64,6 +66,7 @@ class BookingTourFragment : Fragment() {
         setDataBookingTour()
         isLoading()
         msgInfo()
+        setOnItemClicked()
     }
 
     private fun setDataBookingTour(){
@@ -74,6 +77,16 @@ class BookingTourFragment : Fragment() {
                 this?.rvBookingTour?.setHasFixedSize(true)
                 this?.rvBookingTour?.adapter = bookingTourAdapter
             }
+        })
+    }
+
+    private fun setOnItemClicked(){
+        bookingTourAdapter.setOnItemClick(object : BookingTourAdapter.OnItemClickListener{
+            override fun onItemClicked(data: BookingTourData) {
+                val action = BookingTourFragmentDirections.actionNavBookingTourToDetailBookingTourFragment(data)
+                view?.findNavController()?.navigate(action)
+            }
+
         })
     }
 
