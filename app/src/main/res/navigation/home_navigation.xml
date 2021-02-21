@@ -80,7 +80,11 @@
         android:id="@+id/nav_mitra_register"
         android:name="com.azhara.perintisadminapp.ui.home.ui.mitraregister.MitraRegisterFragment"
         android:label="@string/registrasi_mitra"
-        tools:layout="@layout/fragment_mitra_register" />
+        tools:layout="@layout/fragment_mitra_register" >
+        <action
+            android:id="@+id/action_nav_mitra_register_to_detailMitraRegisterFragment"
+            app:destination="@id/detailMitraRegisterFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_user"
         android:name="com.azhara.perintisadminapp.ui.home.ui.user.UserFragment"
@@ -176,6 +180,22 @@
             android:id="@+id/action_detailBookingTourFragment_to_nav_booking_tour"
             app:destination="@id/nav_booking_tour"
             app:popUpTo="@id/nav_booking_tour"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailMitraRegisterFragment"
+        android:name="com.azhara.perintisadminapp.ui.home.ui.mitraregister.DetailMitraRegisterFragment"
+        android:label="Detail Pengajuan Mitra"
+        tools:layout="@layout/fragment_detail_mitra_register">
+        <argument
+            android:name="mitraRegisterData"
+            android:defaultValue="@null"
+            app:argType="com.azhara.perintisadminapp.entity.MitraRegisterData"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_detailMitraRegisterFragment_to_nav_mitra_register"
+            app:destination="@id/nav_mitra_register"
+            app:popUpTo="@id/nav_mitra_register"
             app:popUpToInclusive="true" />
     </fragment>
 </navigation>

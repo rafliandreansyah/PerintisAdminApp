@@ -2,9 +2,11 @@ package com.azhara.perintisadminapp.ui.home.ui.mitraregister.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.azhara.perintisadminapp.R
 import com.azhara.perintisadminapp.databinding.ItemMitraRegisterBinding
 import com.azhara.perintisadminapp.entity.MitraRegisterData
 
@@ -19,6 +21,12 @@ class MitraRegisterAdapter : ListAdapter<MitraRegisterData, MitraRegisterAdapter
                     oldItem.email == newItem.email
 
         }
+    }
+
+    private var onItemClickListener: OnItemClickListener? = null
+
+    fun setOnItemClicked(onItemClickListener: OnItemClickListener?){
+        this.onItemClickListener = onItemClickListener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MitraRegisterAdapter.MitraRegisterViewHolder =
@@ -41,10 +49,35 @@ class MitraRegisterAdapter : ListAdapter<MitraRegisterData, MitraRegisterAdapter
                 tvItemMitraRegisterCarYear.text = "${data.carYear}"
                 tvItemMitraRegisterEmail.text = data.email
                 tvItemMitraRegisterPhoneNumber.text = "${data.phoneNumber}"
-                tvItemMitraRegisterStatus.text = "Menunggu Konfirmasi"
                 tvItemMitraRegisterName.text = data.name
+
+                when (data.statusConfirm) {
+                    null -> {
+                        tvItemMitraRegisterStatus.text = "Menunggu Konfirmasi"
+                        tvItemMitraRegisterStatus
+                            .setTextColor(ContextCompat.getColorStateList(itemView.context, R.color.colorAccent))
+                    }
+                    1 -> {
+                        tvItemMitraRegisterStatus.text = "Diterima"
+                        tvItemMitraRegisterStatus
+                            .setTextColor(ContextCompat.getColorStateList(itemView.context, R.color.colorGreen))
+                    }
+                    else -> {
+                        tvItemMitraRegisterStatus.text = "Ditolak"
+                        tvItemMitraRegisterStatus
+                            .setTextColor(ContextCompat.getColorStateList(itemView.context, R.color.colorRed))
+                    }
+                }
+
+                containerItemMitraRegister.setOnClickListener {
+                    onItemClickListener?.onItemClicked(data)
+                }
             }
         }
+    }
+
+    interface OnItemClickListener{
+        fun onItemClicked(data: MitraRegisterData)
     }
 
 }

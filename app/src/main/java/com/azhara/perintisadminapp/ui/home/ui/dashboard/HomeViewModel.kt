@@ -116,7 +116,7 @@ class HomeViewModel : ViewModel() {
 
     fun getPengajuanMitraConfirmation(){
         _isLoading.value = true
-        val mitraRegisterDB = db.collection("partner_register")
+        val mitraRegisterDB = db.collection("partner_register").whereEqualTo("statusConfirm", null)
         mitraRegisterDB.get().addOnSuccessListener {
             _isLoading.value = false
             val mitraRegisterData = it.toObjects(MitraRegisterData::class.java)

@@ -8,9 +8,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azhara.perintisadminapp.R
 import com.azhara.perintisadminapp.databinding.FragmentMitraRegisterBinding
+import com.azhara.perintisadminapp.entity.MitraRegisterData
 import com.azhara.perintisadminapp.ui.home.HomeActivity
 import com.azhara.perintisadminapp.ui.home.ui.mitraregister.adapter.MitraRegisterAdapter
 import com.azhara.perintisadminapp.utils.Helper
@@ -63,6 +65,17 @@ class MitraRegisterFragment : Fragment() {
         setData()
         isLoading()
         msg()
+        setOnItemClicked()
+    }
+
+    private fun setOnItemClicked(){
+        mitraRegisterAdapter.setOnItemClicked(object : MitraRegisterAdapter.OnItemClickListener{
+            override fun onItemClicked(data: MitraRegisterData) {
+                val action = MitraRegisterFragmentDirections.actionNavMitraRegisterToDetailMitraRegisterFragment(data)
+                view?.findNavController()?.navigate(action)
+            }
+
+        })
     }
 
     private fun setData(){

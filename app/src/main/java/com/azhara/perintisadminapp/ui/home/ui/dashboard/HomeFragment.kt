@@ -118,7 +118,7 @@ class HomeFragment : Fragment() {
 
     private fun dataBookingCar(){
         homeViewModel.dataBookingCar.observe(viewLifecycleOwner, { dataBookingCar ->
-            if (dataBookingCar != null) {
+            if (dataBookingCar != null && dataBookingCar.isNotEmpty()) {
                 var totalIncome = 0L
                 val dataCarWaitingConfirm = dataBookingCar.filter {
                     it.statusBooking == null
@@ -132,6 +132,13 @@ class HomeFragment : Fragment() {
                 dataCarDone.forEach {
                     totalIncome += it.totalPrice!!
                 }
+
+                if (dataCarWaitingConfirm.isEmpty()) {
+                    binding.tvTitleBookingCar.visibility = View.GONE
+                    binding.tvSeeAllBookingMobil.visibility = View.GONE
+                    binding.rvBookingCar.visibility = View.GONE
+                }
+
                 bookingDashboardAdapter.submitList(dataCarWaitingConfirm)
                 binding.rvBookingCar.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 binding.rvBookingCar.setHasFixedSize(true)
@@ -141,24 +148,22 @@ class HomeFragment : Fragment() {
                 binding.tvDashboardCarBookingOnProgress.text = dataCarOnProgress.count().toString()
                 binding.tvDashboardCarBookingDone.text = dataCarDone.count().toString()
                 binding.tvDashboardTotalIncome.text = "Rp. ${Helper.currencyFormat(totalIncome)}"
-
-            } else {
-                binding.tvTitleBookingCar.visibility = View.INVISIBLE
-                binding.tvSeeAllBookingMobil.visibility = View.INVISIBLE
+                
             }
         })
     }
 
     private fun dataMitraRegister(){
         homeViewModel.dataMitraRegister.observe(viewLifecycleOwner, { dataMitraRegister ->
-            if (dataMitraRegister != null){
+            if (dataMitraRegister != null && dataMitraRegister.isNotEmpty()){
                 mitraRegisterAdapter.submitList(dataMitraRegister)
                 binding.rvPengajuanMitra.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 binding.rvPengajuanMitra.setHasFixedSize(true)
                 binding.rvPengajuanMitra.adapter = mitraRegisterAdapter
-            }else{
-                binding.tvTitleMitraRegister.visibility = View.INVISIBLE
-                binding.tvSeeAllPengajuanMitra.visibility = View.INVISIBLE
+            }else if (dataMitraRegister.isEmpty()) {
+                binding.tvTitleMitraRegister.visibility = View.GONE
+                binding.tvSeeAllPengajuanMitra.visibility = View.GONE
+                binding.rvPengajuanMitra.visibility = View.GONE
             }
         })
     }

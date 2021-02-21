@@ -2,9 +2,11 @@ package com.azhara.perintisadminapp.ui.home.ui.dashboard.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.azhara.perintisadminapp.R
 import com.azhara.perintisadminapp.databinding.ItemMitraRegisterDashboardBinding
 import com.azhara.perintisadminapp.entity.MitraRegisterData
 
@@ -43,7 +45,24 @@ class MitraRegisterAdapter : ListAdapter<MitraRegisterData, MitraRegisterAdapter
                     tvItemCarTransmisionPartnerRegister.text = "Automatic"
                 }
                 tvItemCarYearPartnerRegister.text = dataMitraRegister.carYear.toString()
-                tvItemStatusConfirmationPartnerRegister.text = "Menunggu Konfirmasi"
+                when (dataMitraRegister.statusConfirm) {
+                    null -> {
+                        tvItemStatusConfirmationPartnerRegister.text = "Menunggu Konfirmasi"
+                        tvItemStatusConfirmationPartnerRegister
+                            .setTextColor(ContextCompat.getColorStateList(itemView.context, R.color.colorAccent))
+                    }
+                    1 -> {
+                        tvItemStatusConfirmationPartnerRegister.text = "Diterima"
+                        tvItemStatusConfirmationPartnerRegister
+                            .setTextColor(ContextCompat.getColorStateList(itemView.context, R.color.colorGreen))
+                    }
+                    else -> {
+                        tvItemStatusConfirmationPartnerRegister.text = "Ditolak"
+                        tvItemStatusConfirmationPartnerRegister
+                            .setTextColor(ContextCompat.getColorStateList(itemView.context, R.color.colorRed))
+                    }
+                }
+
             }
         }
     }
