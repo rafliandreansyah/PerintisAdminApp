@@ -172,5 +172,10 @@
             app:argType="com.azhara.perintisadminapp.entity.BookingTourData"
             app:nullable="true"
             android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_detailBookingTourFragment_to_nav_booking_tour"
+            app:destination="@id/nav_booking_tour"
+            app:popUpTo="@id/nav_booking_tour"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

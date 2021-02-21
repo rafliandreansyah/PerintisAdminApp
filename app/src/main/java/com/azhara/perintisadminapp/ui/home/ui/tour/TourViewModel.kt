@@ -47,7 +47,7 @@ class TourViewModel : ViewModel() {
         }
         val uploadTask = tourStorage?.putBytes(imgTour)
         uploadTask?.addOnFailureListener {
-            _msg.value = "Fagal upload gambar"
+            _msg.value = "Gagal upload gambar"
         }?.addOnSuccessListener {
             (uploadTask).continueWithTask { task ->
 

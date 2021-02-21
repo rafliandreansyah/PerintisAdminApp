@@ -113,7 +113,7 @@ class DetailBookingCarFragment : Fragment(), View.OnClickListener {
                 }
                 "1" -> {
                     this?.tvDetailCarBookingStatus?.text = "Selesai"
-                    this?.tvDetailCarBookingStatus?.setTextColor(context?.let { ContextCompat.getColorStateList(it, R.color.colorRed) })
+                    this?.tvDetailCarBookingStatus?.setTextColor(context?.let { ContextCompat.getColorStateList(it, R.color.colorGreen) })
                     this?.btnDetailCarBookingConfirmation?.visibility = View.INVISIBLE
                     this?.btnDetailCarBookingDelete?.visibility = View.INVISIBLE
                     statusBooking = 1

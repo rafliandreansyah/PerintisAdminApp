@@ -38,6 +38,7 @@ class DetailBookingTourFragment : Fragment(), View.OnClickListener {
     private var phoneNumber: String? = null
     private var imgUrlProofPayment: String? = null
     private var dialog: Dialog? = null
+    private var statusBookingTour: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +54,9 @@ class DetailBookingTourFragment : Fragment(), View.OnClickListener {
 
         //Get data tour
         bookingTourViewModel.getTour(bookingTourData?.tourId)
+
+        //Get detail booking tour
+        bookingTourViewModel.getDetailBookingTourUser(bookingTourData?.userId, bookingTourData?.idDetailBookingTourUser)
 
     }
 
@@ -94,20 +98,6 @@ class DetailBookingTourFragment : Fragment(), View.OnClickListener {
             tvTourNameDetailBookingTour.text = bookingTourData?.tourName
             tvLocationPickupAreaDetailBookingTour.text = bookingTourData?.pickupArea
             tvStartDateDetailBookingTour.text = "${Helper.convertTime(bookingTourData?.dateTour?.seconds, "dd MMMM yyyy")}"
-            if (bookingTourData?.statusPayment == true){
-                tvStatusConfirmationDetailBookingTour.text = "Terkonfirmasi"
-                tvStatusConfirmationDetailBookingTour.setTextColor(context?.let {
-                    ContextCompat.getColorStateList(
-                        it, R.color.colorGreen)
-                })
-            }
-            else{
-                tvStatusConfirmationDetailBookingTour.text = "Menunggu Konfirmasi"
-                tvStatusConfirmationDetailBookingTour.setTextColor(context?.let {
-                    ContextCompat.getColorStateList(
-                        it, R.color.colorRed)
-                })
-            }
             tvTotalPaymentDetailBookingTour.text = "Rp. ${bookingTourData?.totalPrice?.let { Helper.currencyFormat(it) }}"
             tvDurationDetailBookingTour.text = bookingTourData?.duration
 
@@ -173,6 +163,42 @@ class DetailBookingTourFragment : Fragment(), View.OnClickListener {
                     }
                 }
             })
+
+            //Detail booking tour user
+            bookingTourViewModel.userDetailBookingTour.observe(viewLifecycleOwner, { detailBookingTour ->
+                if (detailBookingTour != null){
+
+                    if (bookingTourData?.statusPayment == false && detailBookingTour.statusBooking == 0){
+                        tvStatusConfirmationDetailBookingTour.text = "Menunggu Konfirmasi"
+                        tvStatusConfirmationDetailBookingTour.setTextColor(context?.let {
+                            ContextCompat.getColorStateList(
+                                it, R.color.colorRed)
+                        })
+                    }
+                    else if (bookingTourData?.statusPayment == true && detailBookingTour.statusBooking == 0){
+                        tvStatusConfirmationDetailBookingTour.text = "On Progress"
+                        tvStatusConfirmationDetailBookingTour.setTextColor(context?.let {
+                            ContextCompat.getColorStateList(
+                                it, R.color.colorAccent)
+                        })
+
+                        btnConfirmationDetailBookingTour.text = "Selesai"
+                        statusBookingTour = 1
+
+                    }
+                    else if (bookingTourData?.statusPayment == true && detailBookingTour.statusBooking == 1){
+                        tvStatusConfirmationDetailBookingTour.text = "Selesai"
+                        tvStatusConfirmationDetailBookingTour.setTextColor(context?.let {
+                            ContextCompat.getColorStateList(
+                                it, R.color.colorGreen)
+                        })
+                        btnConfirmationDetailBookingTour.visibility = View.INVISIBLE
+                        btnDeleteDetailBookingTour.visibility = View.INVISIBLE
+                    }
+
+                }
+            })
+
         }
 
     }
@@ -199,11 +225,16 @@ class DetailBookingTourFragment : Fragment(), View.OnClickListener {
             }
 
             R.id.btnConfirmationDetailBookingTour -> {
-
+                if (statusBookingTour == 1){
+                    bookingTourViewModel.updateStatusBooking(bookingTourData?.userId, bookingTourData?.idDetailBookingTourUser)
+                }
+                else{
+                    bookingTourData?.let { bookingTourViewModel.confirmBookingTour(it) }
+                }
             }
 
             R.id.btnDeleteDetailBookingTour -> {
-
+                bookingTourData?.let { bookingTourViewModel.deleteBookingTour(it) }
             }
 
             R.id.btnDetailProofPaymentDetailBookingTour -> {
@@ -228,7 +259,12 @@ class DetailBookingTourFragment : Fragment(), View.OnClickListener {
     private fun msg(){
         bookingTourViewModel.msg.observe(viewLifecycleOwner, { msg ->
             if (msg != null) {
-                Helper.snackbar(msg, binding.containerDetailBookingTour)
+                when(msg){
+                    "success confirm" -> view?.findNavController()?.navigate(R.id.action_detailBookingTourFragment_to_nav_booking_tour)
+                    "success delete" -> view?.findNavController()?.navigate(R.id.action_detailBookingTourFragment_to_nav_booking_tour)
+                    "success update status booking" -> view?.findNavController()?.navigate(R.id.action_detailBookingTourFragment_to_nav_booking_tour)
+                    else -> Helper.snackbar(msg, binding.containerDetailBookingTour)
+                }
             }
         })
     }
