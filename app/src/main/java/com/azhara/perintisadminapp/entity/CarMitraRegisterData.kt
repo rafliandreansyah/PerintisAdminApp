@@ -9,7 +9,8 @@ data class CarMitraRegisterData(
         var carTransmission: String? = null,
         var carType: String? = null,
         var partnerId: String? = null,
-        var carYear: Int? = null
+        var carYear: Int? = null,
+        var statusConfirm: Int? = null
 ): Parcelable {
         constructor(parcel: Parcel) : this(
                 parcel.readString(),
@@ -17,6 +18,7 @@ data class CarMitraRegisterData(
                 parcel.readString(),
                 parcel.readString(),
                 parcel.readString(),
+                parcel.readValue(Int::class.java.classLoader) as? Int,
                 parcel.readValue(Int::class.java.classLoader) as? Int
         ) {
         }
@@ -28,6 +30,7 @@ data class CarMitraRegisterData(
                 parcel.writeString(carType)
                 parcel.writeString(partnerId)
                 parcel.writeValue(carYear)
+                parcel.writeValue(statusConfirm)
         }
 
         override fun describeContents(): Int {

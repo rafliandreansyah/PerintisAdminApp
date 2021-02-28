@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/containerDetailCarMitraRegister"
+    tools:context=".ui.home.ui.carmitraregister.DetailMitraCarRegisterFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline52"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline53"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView5"
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline53"
+            app:layout_constraintStart_toStartOf="@+id/guideline52"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imgDetailCarRegister"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tvCarNameDetailMitraCarRegister"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline53"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline52"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView5"
+            tools:text="Mobilio Type E Prestige" />
+
+        <TextView
+            android:id="@+id/tvStatusConfirmationDetailMitraCarRegister"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_light"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvCarNameDetailMitraCarRegister"
+            app:layout_constraintStart_toStartOf="@+id/tvCarNameDetailMitraCarRegister"
+            app:layout_constraintTop_toBottomOf="@+id/tvCarNameDetailMitraCarRegister"
+            tools:text="Menunggu konfirmasi" />
+
+        <TextView
+            android:id="@+id/tvTransmissionDetailMitraRegister"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_light"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvStatusConfirmationDetailMitraCarRegister"
+            app:layout_constraintStart_toStartOf="@+id/tvStatusConfirmationDetailMitraCarRegister"
+            app:layout_constraintTop_toBottomOf="@+id/tvStatusConfirmationDetailMitraCarRegister"
+            tools:text="Automatic" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorLigtGrey"
+            android:paddingVertical="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTransmissionDetailMitraRegister">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.05" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline34"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.95" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgMitraImageDetailMitraCarRegister"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@color/colorTextSecondary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline33"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvMitraNameDetailMitraCarRegister"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/colorTextPrimary"
+                app:layout_constraintBottom_toTopOf="@+id/tvMitraEmailDetailMitraCarRegister"
+                app:layout_constraintEnd_toStartOf="@+id/btnCallDetailMitraCarRegister"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imgMitraImageDetailMitraCarRegister"
+                app:layout_constraintTop_toTopOf="@+id/imgMitraImageDetailMitraCarRegister"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:text="Rafli Andreansyah" />
+
+            <TextView
+                android:id="@+id/tvMitraEmailDetailMitraCarRegister"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toTopOf="@+id/tvDetailBookingUserPhone"
+                app:layout_constraintEnd_toEndOf="@+id/tvMitraNameDetailMitraCarRegister"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvMitraNameDetailMitraCarRegister"
+                app:layout_constraintTop_toBottomOf="@+id/tvMitraNameDetailMitraCarRegister"
+                tools:text="rafliandreansyah957@gmail.com" />
+
+            <TextView
+                android:id="@+id/tvPhoneDetailMitraCarRegister"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgMitraImageDetailMitraCarRegister"
+                app:layout_constraintEnd_toEndOf="@+id/tvMitraEmailDetailMitraCarRegister"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvMitraEmailDetailMitraCarRegister"
+                app:layout_constraintTop_toBottomOf="@+id/tvMitraEmailDetailMitraCarRegister"
+                tools:text="081232720821" />
+
+            <ImageView
+                android:id="@+id/btnCallDetailMitraCarRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_call"
+                app:layout_constraintBottom_toBottomOf="@+id/tvPhoneDetailMitraCarRegister"
+                app:layout_constraintEnd_toStartOf="@+id/guideline34"
+                app:layout_constraintTop_toTopOf="@+id/tvMitraNameDetailMitraCarRegister" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textView32"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/informasi_mobil"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline53"
+            app:layout_constraintStart_toStartOf="@+id/guideline52"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+        <TextView
+            android:id="@+id/textView33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="@string/tahun"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/guideline52"
+            app:layout_constraintTop_toBottomOf="@+id/textView32" />
+
+        <TextView
+            android:id="@+id/tvCarYearDetailMitraCarRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/textView33"
+            app:layout_constraintTop_toBottomOf="@+id/textView33"
+            tools:text="2018" />
+
+        <TextView
+            android:id="@+id/textView39"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:fontFamily="@font/roboto_light"
+            android:text="@string/no_mobil"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/textView33"
+            app:layout_constraintTop_toTopOf="@+id/textView33" />
+
+        <TextView
+            android:id="@+id/tvNumberRegisterDetailMitraCarRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/textView39"
+            app:layout_constraintTop_toBottomOf="@+id/textView39"
+            tools:text="AG 2020 MA" />
+
+        <Button
+            android:id="@+id/btnConfirmationDetailMitraCarRegister"
+            style="@style/ButtonPrimary"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@color/colorGreen"
+            android:text="@string/terima"
+            app:layout_constraintEnd_toStartOf="@+id/guideline53"
+            app:layout_constraintStart_toStartOf="@+id/guideline52"
+            app:layout_constraintTop_toBottomOf="@+id/tvNumberRegisterDetailMitraCarRegister" />
+
+        <Button
+            android:id="@+id/btnRejectDetailMitraCarRegister"
+            style="@style/ButtonOutline"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="30dp"
+            android:text="@string/tolak"
+            android:textColor="@color/colorRed"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline53"
+            app:layout_constraintStart_toStartOf="@+id/guideline52"
+            app:layout_constraintTop_toBottomOf="@+id/btnConfirmationDetailMitraCarRegister"
+            app:layout_constraintVertical_bias="0.0"
+            app:strokeColor="@color/colorRed" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
