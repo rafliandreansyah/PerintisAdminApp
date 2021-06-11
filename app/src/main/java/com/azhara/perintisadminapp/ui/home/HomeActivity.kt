@@ -1,7 +1,9 @@
 package com.azhara.perintisadminapp.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
@@ -14,6 +16,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.azhara.perintisadminapp.R
 import com.azhara.perintisadminapp.databinding.ActivityHomeBinding
+import com.azhara.perintisadminapp.ui.auth.LoginActivity
+import com.google.firebase.auth.FirebaseAuth
 
 class HomeActivity : AppCompatActivity() {
 
@@ -40,6 +44,15 @@ class HomeActivity : AppCompatActivity() {
                     R.id.nav_register_car
             ), drawerLayout
         )
+
+        navView.menu.findItem(R.id.nav_logout).setOnMenuItemClickListener {
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            this.finish()
+            false
+        }
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
